@@ -1,0 +1,15 @@
+export const SLIDES = [
+  "/deck/01.jpg",
+  "/deck/02.jpg",
+  "/deck/03.jpg",
+  "/deck/04.jpg",
+  "/deck/05.jpg",
+  "/deck/06.jpg",
+  "/deck/07.jpg",
+  "/deck/08.jpg",
+  "/deck/09.jpg",
+  "/deck/10.jpg",
+  "/deck/11.jpg",
+  "/deck/12.jpg",
+  "/deck/13.jpg",
+];
