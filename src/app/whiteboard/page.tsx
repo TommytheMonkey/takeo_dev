@@ -22,12 +22,19 @@ export default function WhiteboardPage() {
   return (
     <div className="min-h-screen bg-black">
       {/* Jungle Header Image - Full Width */}
-      <div className="w-full overflow-hidden">
+      <div className="w-full overflow-hidden bg-black">
         <img 
           src="/header-jungle.png" 
           alt="Takeoff Monkey" 
-          className="w-full h-auto block"
-          style={{ margin: '0 -2%', width: '104%' }}
+          className="block"
+          style={{ 
+            width: '110%', 
+            marginLeft: '-5%',
+            marginRight: '-5%',
+            marginTop: '-2%',
+            marginBottom: '-2%',
+            maxWidth: 'none'
+          }}
         />
       </div>
 
