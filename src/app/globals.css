@@ -45,8 +45,3 @@ body.whiteboard-page {
 .animate-fadeIn {
   animation: fadeIn 1s ease-out forwards;
 }
-
-.dotted-grid {
-  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
