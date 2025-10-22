@@ -26,12 +26,12 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 ## Features
 
 ### Landing Page
-- Black background (#000000) with layered dark green jungle leaf decorations
-- Takeoff Monkey branding with yellow (#E9E44C) logo and text
-- "Takeo" title and "Enter the Monkey Cage" interactive link
+- Pure black background (#000000)
+- White Takeoff Monkey logo centered on screen
+- Logo is clickable and triggers password modal
 - Password protection modal (password: "bananas")
-- Fade-in animation on page load
-- Fully responsive layout centered on all screen sizes
+- Clean, minimal design
+- Fully responsive layout
 
 ### Password Protection
 - Client-side password gate for accessing the whiteboard
@@ -48,10 +48,11 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 ## Recent Changes (October 22, 2025)
 
 ### Landing Page Implementation
-1. **Created Takeoff Monkey Theme**: Black background with jungle leaf SVG decorations
-2. **Interactive Elements**: Password modal with client-side authentication
-3. **Custom Animations**: Fade-in effect for logo and content on page load
-4. **Responsive Design**: Flexbox layout that adapts to all screen sizes
+1. **Minimal Design**: Simple black background with centered white logo
+2. **Clickable Logo**: Logo triggers password modal for whiteboard access
+3. **Password Protection**: Client-side authentication (password: "bananas")
+4. **Responsive Design**: Logo scales appropriately on all screen sizes
+5. **Font Configuration**: Montserrat Extra Bold (800 weight) used throughout
 
 ### Migration from Vercel to Replit
 1. **Removed Static Export Mode**: Changed from `output: 'export'` to dynamic server mode, which is required for Replit's environment
