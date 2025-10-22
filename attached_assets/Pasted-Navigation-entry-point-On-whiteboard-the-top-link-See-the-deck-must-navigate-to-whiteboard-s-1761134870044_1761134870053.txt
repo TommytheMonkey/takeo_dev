@@ -1,0 +1,39 @@
+Navigation entry point
+	•	On /whiteboard, the top link “See the deck” must navigate to /whiteboard/slidedeck. Do not change other links.
+
+Viewer behavior (full-screen overlay page)
+	•	Route: app/whiteboard/slidedeck/page.tsx
+	•	The viewer is full-window (100vw × 100vh), with a black background.
+	•	Image scales to contain within the viewport (no cropping), centered both axes, preserving aspect ratio, with max height and width used.
+	•	Controls:
+	•	Right chevron on the right edge to go to the next slide.
+	•	Left chevron on the left edge to go to the previous slide.
+	•	“X” close button in the top-right (ok to also show in top-left on small screens if easier). Clicking it returns to /whiteboard.
+	•	Clicking the backdrop does nothing (avoid accidental close).
+	•	Keyboard & gestures:
+	•	→ Next, ← Previous, Esc Close.
+	•	On touch devices, support swipe left/right to navigate.
+	•	Index state & deep-links:
+	•	Start on slide 1 by default.
+	•	Support query param ?s=<index> (1-based). Example: /whiteboard/slidedeck?s=5 opens on slide 5.
+	•	Update the URL (shallow push) when navigating so refresh keeps the same slide (no full reload).
+	•	Preloading: Preload the next and previous images for snappy navigation.
+	•	Accessibility:
+	•	Buttons have aria-label (“Next slide”, “Previous slide”, “Close deck”).
+	•	Ensure a visible focus ring and keyboard operability.
+	•	Branding / UI:
+	•	Use Tailwind. Black background bg-black, page text in white when needed.
+	•	Controls are minimalist: white icons at ~70% opacity, on hover/focus 100%.
+	•	Controls float over the image; keep them outside the image hit-area when possible.
+	•	No SSR image layout required; plain <img> is fine. (Optional: Next <Image> with fill.)
+
+Files to create / modify
+	•	public/deck/01.jpg … (copy from my attachments)
+	•	app/whiteboard/slidedeck/slides.ts (ordered array as above)
+	•	app/whiteboard/slidedeck/Controls.tsx (icon buttons for Next/Prev/Close)
+	•	app/whiteboard/slidedeck/page.tsx (the full-screen viewer)
+	•	Ensure /whiteboard already links “See the deck” → /whiteboard/slidedeck
+
+Implementation details
+	•	In page.tsx, read searchParams.s (1-based). Keep index in React state.
+	•	Navigation:
