@@ -43,12 +43,13 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 ### Whiteboard Area
 - Main route at `/whiteboard` with complete presentation layout
 - Features:
-  - Header with "Takeoff Monkey Presents" and "Takeo: pre-construction, unjammed"
+  - Jungle header image with Takeoff Monkey logo and green leaves
+  - "Takeo: pre-construction, unjammed" headline in white
   - Five navigation links to sub-sections
   - Showcase area with slideshow component (ready for demo screenshots)
   - "Get Updates" CTA with email capture modal
   - Footer with copyright and link to www.takeoffmonkey.com
-  - Dotted grid background (subtle notebook effect)
+  - Black background with white text throughout
 - Sub-routes:
   - `/whiteboard/slidedeck` - Full-screen slide deck viewer (13 slides)
   - `/whiteboard/story` - Our Story (placeholder)
@@ -87,10 +88,10 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 
 ### Whiteboard Section Implementation (October 22, 2025)
 1. **Complete Layout**: Full-featured presentation page with header, navigation, showcase, and footer
-2. **Dotted Grid Background**: Subtle dotted notebook pattern across entire viewport
+2. **Jungle Theme Design**: Black background with jungle header image featuring Takeoff Monkey logo
 3. **Navigation System**: Five sub-routes with placeholder pages (slidedeck, story, prospectus, demo, widgets)
 4. **Interactive Components**: Slideshow component and email capture modal
-5. **Brand Styling**: Clean modern design with yellow (#E9E44C) accent color on hover
+5. **Brand Styling**: High-contrast white text on black with yellow (#E9E44C) accent color on hover
 6. **Responsive Design**: Mobile-first layout that adapts to all screen sizes
 
 ### Slide Deck Viewer Implementation (October 22, 2025)

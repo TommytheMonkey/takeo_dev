@@ -31,6 +31,10 @@ body.whiteboard-page {
   background-color: white;
 }
 
+body.whiteboard-page-black {
+  background-color: black;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

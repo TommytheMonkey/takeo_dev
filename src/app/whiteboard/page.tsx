@@ -9,9 +9,9 @@ export default function WhiteboardPage() {
   const [showEmailModal, setShowEmailModal] = useState(false);
 
   useEffect(() => {
-    document.body.classList.add('whiteboard-page');
+    document.body.classList.add('whiteboard-page-black');
     return () => {
-      document.body.classList.remove('whiteboard-page');
+      document.body.classList.remove('whiteboard-page-black');
     };
   }, []);
 
@@ -20,46 +20,51 @@ export default function WhiteboardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-6xl mx-auto px-6 py-12 md:px-12 md:py-16">
-        <div className="bg-white rounded border-4 border-black/5 p-6 md:p-8 lg:p-12 min-h-[calc(100vh-6rem)]">
-          
+    <div className="min-h-screen bg-black">
+      <div className="max-w-7xl mx-auto">
+        {/* Jungle Header Image */}
+        <div className="w-full">
+          <img 
+            src="/header-jungle.png" 
+            alt="Takeoff Monkey" 
+            className="w-full h-auto"
+          />
+        </div>
+
+        <div className="px-6 py-8 md:px-12 md:py-12">
           <header className="text-center mb-12">
-            <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mb-3">
-              Takeoff Monkey Presents
-            </p>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-8">
               Takeo: pre-construction, unjammed
             </h1>
             
             <nav className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 text-sm md:text-base">
               <Link 
                 href="/whiteboard/slidedeck" 
-                className="font-bold text-black hover:text-[#E9E44C] hover:underline transition-all duration-150"
+                className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
               >
                 See the deck
               </Link>
               <Link 
                 href="/whiteboard/story" 
-                className="font-bold text-black hover:text-[#E9E44C] hover:underline transition-all duration-150"
+                className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
               >
                 Our Story
               </Link>
               <Link 
                 href="/whiteboard/prospectus" 
-                className="font-bold text-black hover:text-[#E9E44C] hover:underline transition-all duration-150"
+                className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
               >
                 Prospectus
               </Link>
               <Link 
                 href="/whiteboard/demo" 
-                className="font-bold text-black hover:text-[#E9E44C] hover:underline transition-all duration-150"
+                className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
               >
                 Demo
               </Link>
               <Link 
                 href="/whiteboard/widgets" 
-                className="font-bold text-black hover:text-[#E9E44C] hover:underline transition-all duration-150"
+                className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
               >
                 Widgets
               </Link>
@@ -67,7 +72,7 @@ export default function WhiteboardPage() {
           </header>
 
           <section className="mb-12">
-            <div className="border-2 border-black/10 rounded-lg p-4 md:p-6">
+            <div className="border-2 border-white/20 rounded-lg p-4 md:p-6">
               <Slideshow images={[]} />
             </div>
           </section>
@@ -75,22 +80,22 @@ export default function WhiteboardPage() {
           <div className="text-center mb-16">
             <button
               onClick={handleGetUpdates}
-              className="text-xl md:text-2xl font-bold text-black hover:text-[#E9E44C] transition-colors duration-150 cursor-pointer"
+              className="text-xl md:text-2xl font-bold text-white hover:text-[#E9E44C] transition-colors duration-150 cursor-pointer"
             >
               Get Updates
             </button>
           </div>
 
-          <footer className="mt-auto pt-12 border-t border-gray-200">
+          <footer className="mt-auto pt-12 border-t border-white/20">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <p className="text-xs md:text-sm text-gray-600">
-                Footer: © 2025 Takeoff Monkey
+              <p className="text-xs md:text-sm text-white/70">
+                © 2025 Takeoff Monkey
               </p>
               <a
                 href="https://www.takeoffmonkey.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold text-black hover:text-[#E9E44C] transition-colors duration-150"
+                className="font-bold text-white hover:text-[#E9E44C] transition-colors duration-150"
               >
                 www.takeoffmonkey.com
               </a>
