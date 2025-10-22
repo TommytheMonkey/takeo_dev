@@ -25,6 +25,12 @@ body {
   font-weight: 800;
 }
 
+body.whiteboard-page {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-color: white;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -38,4 +44,9 @@ body {
 
 .animate-fadeIn {
   animation: fadeIn 1s ease-out forwards;
+}
+
+.dotted-grid {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
 }

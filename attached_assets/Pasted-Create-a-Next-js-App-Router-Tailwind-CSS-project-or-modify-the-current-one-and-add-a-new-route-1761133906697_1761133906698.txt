@@ -1,0 +1,67 @@
+Create a Next.js (App Router) + Tailwind CSS project (or modify the current one) and add a new route /whiteboard that matches this wireframe exactly:
+	1.	Canvas / frame
+
+	•	Full-page layout with generous white space and a thin dotted grid background (very light gray dots) and a 4px rounded border around the main content area (padding ~24–32px).
+	•	Mobile → desktop responsive, keeping the same proportions and hierarchy.
+
+	2.	Header / Title block (centered)
+
+	•	Small line of text centered at the top: “Takeoff Monkey Presents” (muted gray, letter-spaced).
+	•	Large headline centered below it: “Takeo: pre-construction, unjammed” (bold, modern sans, tight tracking).
+
+	3.	Top navigation (inline, centered under the headline)
+Add five subheaders evenly spaced in one line; each is a link to the routes below (same casing as shown here, bold/black, hover underline):
+
+	•	See the deck → /whiteboard/slidedeck
+	•	Our Story → /whiteboard/story
+	•	Prospectus → /whiteboard/prospectus
+	•	Demo → /whiteboard/demo
+	•	Widgets → /whiteboard/widgets
+The whole nav row stays centered and wraps gracefully on small screens.
+
+	4.	Showcase box (large centered rectangle)
+
+	•	A large rounded rectangle centered on the page with a subtle 2px border (black at ~10–15% opacity).
+	•	Inside, place a slideshow placeholder with this caption centered in light gray: {slideshow of demo screenshots}.
+	•	Implement a minimal slideshow component that accepts an array of image URLs (OK to leave the array empty with placeholder notes).
+
+	5.	Primary CTA (centered, below showcase)
+
+	•	Text only, bold and centered: “Get Updates” (treat as a link or button).
+	•	Clicking it scrolls to (or opens) a simple email capture (name + email) section below the fold, or use a modal—your choice. Wire the form to a fake submit handler for now.
+
+	6.	Footer (pinned to bottom area)
+
+	•	Left side text (small): “Footer: (C) 2025 Takeoff Monkey”.
+	•	Center bottom link (bold): www.takeoffmonkey.com that navigates to https://www.takeoffmonkey.com/.
+	•	Keep it minimal with ample spacing.
+
+	7.	Brand feel / styling
+
+	•	Extremely clean, modern, high contrast black text on white.
+	•	Use a geometric/humanist sans (Inter or similar).
+	•	Tailwind tokens:
+	•	Accent yellow #E9E44C (for hover accents/links only, very subtle).
+	•	Very light grid dots using a CSS background (data-URI or Tailwind bg-[image]) so the page feels like a dotted notebook.
+	•	Smooth transitions (150–200ms) on hovers; no heavy animations.
+
+	8.	Files & routes to create
+
+	•	app/whiteboard/page.tsx → implements the exact layout above.
+	•	app/whiteboard/slidedeck/page.tsx → placeholder with “Slide Deck – Coming Soon”.
+	•	app/whiteboard/story/page.tsx → placeholder with “Our Story – Coming Soon”.
+	•	app/whiteboard/prospectus/page.tsx → placeholder with “Prospectus – Coming Soon”.
+	•	app/whiteboard/demo/page.tsx → placeholder with “Demo – Coming Soon”.
+	•	app/whiteboard/widgets/page.tsx → placeholder with “Widgets – Coming Soon”.
+	•	Add any components you need under app/components/ (e.g., Showcase.tsx).
+
+	9.	Tailwind & layout
+
+	•	Ensure Tailwind is set up with globals.css importing @tailwind base; @tailwind components; @tailwind utilities;.
+	•	Use a shared app/layout.tsx with <html lang="en"> and clean defaults.
+
+	10.	Acceptance checklist
+
+	•	Visiting /whiteboard shows: small “Takeoff Monkey Presents”, large “Takeo: pre-construction, unjammed”, the five subheader links (to the exact routes above), a large bordered slideshow rectangle with placeholder caption, a centered “Get Updates” CTA, and a footer with left text and a centered www.takeoffmonkey.com link to the live site.
+	•	Page is responsive and matches the described spacing/typography.
+	•	All five sublinks navigate to working placeholder pages.
