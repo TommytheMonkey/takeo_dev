@@ -29,14 +29,14 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 - Pure black background (#000000)
 - White Takeoff Monkey logo centered on screen
 - Logo is clickable and triggers password modal
-- Password protection modal (password: "bananas")
+- Password protection modal (password: "100M")
 - Clean, minimal design
 - Fully responsive layout
 
 ### Password Protection
 - Client-side password gate for accessing the whiteboard
 - Simple modal interface for password entry
-- Redirects to `/whiteboard` on correct password
+- Redirects to `/whiteboard` on correct password (password: "100M")
 - "Access Denied" alert on incorrect password
 - **Note**: This is a UX-level gate; users can bypass by navigating directly to /whiteboard. For true access control, implement server-side middleware.
 
@@ -50,7 +50,7 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 ### Landing Page Implementation
 1. **Minimal Design**: Simple black background with centered white logo
 2. **Clickable Logo**: Logo triggers password modal for whiteboard access
-3. **Password Protection**: Client-side authentication (password: "bananas")
+3. **Password Protection**: Client-side authentication (password: "100M")
 4. **Responsive Design**: Logo scales appropriately on all screen sizes
 5. **Font Configuration**: Montserrat Extra Bold (800 weight) used throughout
 

@@ -11,7 +11,7 @@ export default function LandingPage() {
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'bananas') {
+    if (password === '100M') {
       router.push('/whiteboard');
     } else {
       alert('Access Denied.');
