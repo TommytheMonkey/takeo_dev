@@ -49,15 +49,32 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
   - "Get Updates" CTA with email capture modal
   - Footer with copyright and link to www.takeoffmonkey.com
   - Dotted grid background (subtle notebook effect)
-- Sub-routes (all with placeholder content):
-  - `/whiteboard/slidedeck` - Slide Deck
-  - `/whiteboard/story` - Our Story
-  - `/whiteboard/prospectus` - Prospectus
-  - `/whiteboard/demo` - Demo
-  - `/whiteboard/widgets` - Widgets
+- Sub-routes:
+  - `/whiteboard/slidedeck` - Full-screen slide deck viewer (13 slides)
+  - `/whiteboard/story` - Our Story (placeholder)
+  - `/whiteboard/prospectus` - Prospectus (placeholder)
+  - `/whiteboard/demo` - Demo (placeholder)
+  - `/whiteboard/widgets` - Widgets (placeholder)
 - Components:
   - `Slideshow.tsx` - Accepts array of image URLs for demo screenshots
   - `EmailCapture.tsx` - Name and email form with fake submit handler
+
+### Full-Screen Slide Deck Viewer
+- Route: `/whiteboard/slidedeck`
+- Features:
+  - 13 pitch deck slides in full-screen black viewer
+  - Keyboard navigation: Arrow keys (←/→) to navigate, Escape to close
+  - Touch gestures: Swipe left/right on mobile devices
+  - Navigation controls: Chevron buttons and close (X) button
+  - URL-based deep linking: `?s=<number>` parameter for specific slides
+  - Slide counter showing current position (e.g., "3 / 13")
+  - Image preloading for instant navigation
+  - Body scroll prevention while viewer is open
+- Implementation:
+  - `slides.ts` - Ordered array of 13 slide image paths
+  - `Controls.tsx` - Navigation buttons with SVG icons and accessibility labels
+  - `page.tsx` - Main viewer with keyboard, touch, and URL navigation
+- Images: Stored in `public/deck/` (01.jpg through 13.jpg)
 
 ## Recent Changes (October 22, 2025)
 
@@ -75,6 +92,14 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 4. **Interactive Components**: Slideshow component and email capture modal
 5. **Brand Styling**: Clean modern design with yellow (#E9E44C) accent color on hover
 6. **Responsive Design**: Mobile-first layout that adapts to all screen sizes
+
+### Slide Deck Viewer Implementation (October 22, 2025)
+1. **Full-Screen Experience**: True full-window viewer (100vw × 100vh) with black background
+2. **13 Pitch Deck Slides**: Imported from attached JPGs, stored as 01.jpg - 13.jpg
+3. **Multi-Input Navigation**: Keyboard (arrows/Esc), touch gestures (swipe), and on-screen controls
+4. **URL State Management**: Query parameter `?s=N` enables deep linking and refresh persistence
+5. **Performance Optimizations**: Adjacent slide preloading, robust NaN handling, tap-vs-swipe detection
+6. **Accessibility**: All controls have aria-labels, keyboard focus rings, proper semantic HTML
 
 ### Migration from Vercel to Replit
 1. **Removed Static Export Mode**: Changed from `output: 'export'` to dynamic server mode, which is required for Replit's environment
