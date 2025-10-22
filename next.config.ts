@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',   // tells Next to generate static HTML
+  // Removed 'output: export' for Replit compatibility - use dynamic server
 };
 
 export default nextConfig;
