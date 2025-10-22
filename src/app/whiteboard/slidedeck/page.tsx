@@ -10,11 +10,22 @@ export default function SlidedeckPage() {
   const searchParams = useSearchParams();
   
   // Get initial slide from URL param (1-based), default to 1
-  const initialSlide = Math.max(1, Math.min(parseInt(searchParams.get('s') || '1'), SLIDES.length));
+  const parseSlideParam = () => {
+    const param = searchParams.get('s');
+    const parsed = parseInt(param || '1', 10);
+    // If NaN or out of bounds, default to 1
+    if (isNaN(parsed) || parsed < 1 || parsed > SLIDES.length) {
+      return 1;
+    }
+    return parsed;
+  };
+  
+  const initialSlide = parseSlideParam();
   const [index, setIndex] = useState(initialSlide - 1); // Convert to 0-based for internal use
   
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+  const hasMoved = useRef(false);
 
   // Navigation functions
   const next = () => {
@@ -71,13 +82,19 @@ export default function SlidedeckPage() {
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
       touchStartX.current = e.touches[0].clientX;
+      touchEndX.current = e.touches[0].clientX; // Initialize to prevent false swipes
+      hasMoved.current = false;
     };
 
     const handleTouchMove = (e: TouchEvent) => {
       touchEndX.current = e.touches[0].clientX;
+      hasMoved.current = true;
     };
 
     const handleTouchEnd = () => {
+      // Only process if there was actual movement (not just a tap)
+      if (!hasMoved.current) return;
+      
       const swipeThreshold = 50;
       const diff = touchStartX.current - touchEndX.current;
 
