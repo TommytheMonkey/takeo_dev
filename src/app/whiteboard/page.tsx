@@ -21,16 +21,16 @@ export default function WhiteboardPage() {
 
   return (
     <div className="min-h-screen bg-black">
-      <div className="max-w-7xl mx-auto">
-        {/* Jungle Header Image */}
-        <div className="w-full">
-          <img 
-            src="/header-jungle.png" 
-            alt="Takeoff Monkey" 
-            className="w-full h-auto"
-          />
-        </div>
+      {/* Jungle Header Image - Full Width */}
+      <div className="w-full">
+        <img 
+          src="/header-jungle.png" 
+          alt="Takeoff Monkey" 
+          className="w-full h-auto block"
+        />
+      </div>
 
+      <div className="max-w-7xl mx-auto">
         <div className="px-6 py-8 md:px-12 md:py-12">
           <header className="text-center mb-12">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-8">
