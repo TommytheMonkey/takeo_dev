@@ -57,12 +57,14 @@ export default function WhiteboardPage() {
               >
                 Prospectus
               </Link>
-              <Link 
-                href="/whiteboard/demo" 
+              <a 
+                href="https://bid-manager-2-logan14.replit.app/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
               >
                 Demo
-              </Link>
+              </a>
               <Link 
                 href="/whiteboard/widgets" 
                 className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
