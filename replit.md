@@ -129,6 +129,8 @@ npm run build
 npm run start
 ```
 
+**Note**: The start command uses `next start -H 0.0.0.0` without specifying a port. Next.js automatically uses the PORT environment variable provided by Replit's deployment system.
+
 ### Other Commands
 - `npm run lint` - Run ESLint
 - `npm run export` - Generate static export (legacy Vercel config)
@@ -151,8 +153,9 @@ Currently, no environment variables are required. If you add API integrations or
 ## Deployment
 The project is configured for Replit's autoscale deployment:
 - Build command: `npm run build`
-- Start command: `npm run start`
-- Port: 5000
+- Start command: `npm start` (runs `next start -H 0.0.0.0`)
+- Port: Automatically assigned by Replit via PORT environment variable
+- ESLint: Disabled during builds to prevent warnings from blocking deployment
 
 ## Security Notes
 - No API keys or secrets are currently used
