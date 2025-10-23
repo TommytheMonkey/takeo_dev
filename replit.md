@@ -104,14 +104,16 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 
 ### Migration from Vercel to Replit
 1. **Removed Static Export Mode**: Changed from `output: 'export'` to dynamic server mode, which is required for Replit's environment
-2. **Port Configuration**: Updated scripts to bind to port 5000 with host 0.0.0.0 for Replit compatibility
-3. **Deployment Setup**: Configured autoscale deployment with build and start commands
-4. **Dependencies**: Installed all npm packages (341 packages, no vulnerabilities)
+2. **Port Configuration**: Updated scripts to bind to dynamic PORT with host 0.0.0.0 for Replit compatibility
+3. **Deployment Setup**: Configured Cloud Run (Autoscale) deployment with optimized build and start commands
+4. **Health Check Endpoint**: Added `/api/health` route for fast deployment health validation
+5. **Dependencies**: Installed all npm packages (341 packages, no vulnerabilities)
 
 ### Key Configuration Changes
 - Development server: `next dev -p 5000 -H 0.0.0.0`
-- Production server: `next start -p 5000 -H 0.0.0.0`
-- Deployment target: VM (always running, supports SSR)
+- Production server: `next start -p $PORT -H 0.0.0.0` (via start.sh)
+- Deployment target: Autoscale (Cloud Run)
+- Health check: `/api/health` endpoint
 
 ## Development
 
@@ -151,16 +153,17 @@ npm run start
 Currently, no environment variables are required. If you add API integrations or databases in the future, use Replit's secrets management.
 
 ## Deployment
-The project is configured for Replit's VM deployment:
-- Deployment target: VM (always running, supports SSR and dynamic features)
+The project is configured for Replit's Cloud Run (Autoscale) deployment:
+- Deployment target: Autoscale (Cloud Run)
 - Build command: `npm run build`
-- Start command: `sh start.sh` (flexible port binding script)
+- Start command: `sh start.sh` (optimized port binding script)
 - Port: Uses PORT environment variable from Replit, defaults to 5000
+- Health check: `/api/health` endpoint for fast startup validation
 - ESLint: Disabled during builds to prevent warnings from blocking deployment
 
-The `start.sh` script allows the app to use whatever port Replit's VM deployment assigns via the PORT environment variable, ensuring compatibility with the deployment system's port forwarding.
+The `start.sh` script allows the app to use whatever port Replit's Cloud Run deployment assigns via the PORT environment variable, ensuring compatibility with the deployment system's port forwarding.
 
-**Note**: VM deployment is used instead of autoscale because this Next.js app uses server-side rendering and dynamic features. VM deployments are always running and better suited for SSR applications.
+**Health Check Endpoint**: The `/api/health` route provides a lightweight endpoint that responds immediately with `{"status": "ok"}`, allowing deployment health checks to pass quickly without rendering the full landing page.
 
 ## Security Notes
 - No API keys or secrets are currently used
