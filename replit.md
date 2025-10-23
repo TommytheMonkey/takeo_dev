@@ -110,8 +110,8 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 
 ### Key Configuration Changes
 - Development server: `next dev -p 5000 -H 0.0.0.0`
-- Production server: `next start -p 5000 -H 0.0.0.0`
-- Deployment target: Autoscale (stateless, on-demand)
+- Production server: `next start -H 0.0.0.0` (uses PORT env var)
+- Deployment target: VM (always running, supports SSR)
 
 ## Development
 
@@ -151,11 +151,14 @@ npm run start
 Currently, no environment variables are required. If you add API integrations or databases in the future, use Replit's secrets management.
 
 ## Deployment
-The project is configured for Replit's autoscale deployment:
+The project is configured for Replit's VM deployment:
+- Deployment target: VM (always running, supports SSR and dynamic features)
 - Build command: `npm run build`
 - Start command: `npm start` (runs `next start -H 0.0.0.0`)
 - Port: Automatically assigned by Replit via PORT environment variable
 - ESLint: Disabled during builds to prevent warnings from blocking deployment
+
+**Note**: VM deployment is used instead of autoscale because this Next.js app uses server-side rendering and dynamic features. VM deployments are always running and better suited for SSR applications.
 
 ## Security Notes
 - No API keys or secrets are currently used
