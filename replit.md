@@ -154,9 +154,11 @@ Currently, no environment variables are required. If you add API integrations or
 The project is configured for Replit's VM deployment:
 - Deployment target: VM (always running, supports SSR and dynamic features)
 - Build command: `npm run build`
-- Start command: `npm start` (runs `next start -p 5000 -H 0.0.0.0`)
-- Port: 5000 (explicitly configured for VM deployment)
+- Start command: `sh start.sh` (flexible port binding script)
+- Port: Uses PORT environment variable from Replit, defaults to 5000
 - ESLint: Disabled during builds to prevent warnings from blocking deployment
+
+The `start.sh` script allows the app to use whatever port Replit's VM deployment assigns via the PORT environment variable, ensuring compatibility with the deployment system's port forwarding.
 
 **Note**: VM deployment is used instead of autoscale because this Next.js app uses server-side rendering and dynamic features. VM deployments are always running and better suited for SSR applications.
 

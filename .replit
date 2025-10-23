@@ -37,4 +37,4 @@ externalPort = 80
 [deployment]
 deploymentTarget = "vm"
 build = ["npm", "run", "build"]
-run = ["npm", "start"]
+run = ["sh", "start.sh"]
