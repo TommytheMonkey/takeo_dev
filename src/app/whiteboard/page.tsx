@@ -23,6 +23,7 @@ export default function WhiteboardPage() {
     <div className="min-h-screen bg-black">
       {/* Jungle Header Image - Full Width */}
       <div className="w-full overflow-hidden bg-black">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img 
           src="/header-jungle.png" 
           alt="Takeoff Monkey" 

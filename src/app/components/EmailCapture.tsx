@@ -29,7 +29,7 @@ export default function EmailCapture({ onClose }: EmailCaptureProps) {
       
       {submitted ? (
         <p className="text-center text-green-600 font-semibold py-8">
-          Thanks! We'll be in touch soon.
+          Thanks! We&apos;ll be in touch soon.
         </p>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">

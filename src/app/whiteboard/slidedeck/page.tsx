@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Controls from './Controls';
 import { SLIDES } from './slides';
 
-export default function SlidedeckPage() {
+function SlidedeckViewer() {
   const router = useRouter();
   const searchParams = useSearchParams();
   
@@ -76,6 +76,7 @@ export default function SlidedeckPage() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Touch/swipe navigation
@@ -131,6 +132,7 @@ export default function SlidedeckPage() {
   return (
     <div className="fixed inset-0 bg-black z-40 flex items-center justify-center">
       {/* Main slide image */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={SLIDES[index]}
         alt={`Slide ${index + 1} of ${SLIDES.length}`}
@@ -151,5 +153,13 @@ export default function SlidedeckPage() {
         {index + 1} / {SLIDES.length}
       </div>
     </div>
+  );
+}
+
+export default function SlidedeckPage() {
+  return (
+    <Suspense fallback={<div className="fixed inset-0 bg-black" />}>
+      <SlidedeckViewer />
+    </Suspense>
   );
 }
