@@ -51,7 +51,7 @@ export default function EmailCapture({ onClose }: EmailCaptureProps) {
 
   return (
     <div className="w-full max-w-md mx-auto p-8 bg-white rounded-lg border-2 border-black/10">
-      <h3 className="text-2xl font-bold text-center mb-6">Get Updates</h3>
+      <h3 className="text-2xl font-bold text-center mb-6 text-black">Get Updates</h3>
       
       {submitted ? (
         <p className="text-center text-green-600 font-semibold py-8">
@@ -60,7 +60,7 @@ export default function EmailCapture({ onClose }: EmailCaptureProps) {
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-semibold mb-2">
+            <label htmlFor="name" className="block text-sm font-semibold mb-2 text-black">
               Name
             </label>
             <input
@@ -69,13 +69,13 @@ export default function EmailCapture({ onClose }: EmailCaptureProps) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors duration-150"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors duration-150 text-black placeholder-gray-500"
               placeholder="Your name"
             />
           </div>
           
           <div>
-            <label htmlFor="company" className="block text-sm font-semibold mb-2">
+            <label htmlFor="company" className="block text-sm font-semibold mb-2 text-black">
               Company Name
             </label>
             <input
@@ -84,13 +84,13 @@ export default function EmailCapture({ onClose }: EmailCaptureProps) {
               value={company}
               onChange={(e) => setCompany(e.target.value)}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors duration-150"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors duration-150 text-black placeholder-gray-500"
               placeholder="Your company"
             />
           </div>
           
           <div>
-            <label htmlFor="email" className="block text-sm font-semibold mb-2">
+            <label htmlFor="email" className="block text-sm font-semibold mb-2 text-black">
               Email
             </label>
             <input
@@ -99,7 +99,7 @@ export default function EmailCapture({ onClose }: EmailCaptureProps) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors duration-150"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors duration-150 text-black placeholder-gray-500"
               placeholder="your@email.com"
             />
           </div>
