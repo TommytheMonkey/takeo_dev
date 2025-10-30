@@ -54,7 +54,7 @@ export default function WhiteboardPage() {
                 Our Story
               </Link>
               <a 
-                href="/takeo-whitepaper.pdf" 
+                href="/TOM_Deck_2025_10_30.pdf" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
