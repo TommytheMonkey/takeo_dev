@@ -53,7 +53,7 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 - Navigation:
   - "See the deck" - `/TOM_Deck_2025_10_30.pdf` - Pitch deck PDF (opens in new tab)
   - "Our Story" - `/whiteboard/story` - Full story page with Tommy's bio and company history
-  - "Whitepaper" - `/Takeo_Whitepaper_2025.pdf` - Takeo whitepaper PDF (opens in new tab)
+  - "Whitepaper" - `/Takeo_Whitepaper_2025_v2.pdf` - Takeo whitepaper PDF (opens in new tab)
   - "Demo" - `https://bid-manager-2-logan14.replit.app/` - External demo link
   - "Widgets" - `/whiteboard/widgets` - Widgets (placeholder)
   - `/whiteboard/slidedeck` - Full-screen slide deck viewer (13 slides) - accessible via direct URL

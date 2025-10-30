@@ -49,7 +49,7 @@ export default function StoryPage() {
                 Our Story
               </Link>
               <a 
-                href="/Takeo_Whitepaper_2025.pdf" 
+                href="/Takeo_Whitepaper_2025_v2.pdf" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
