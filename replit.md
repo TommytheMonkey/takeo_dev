@@ -89,8 +89,8 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 ### Whiteboard Section Implementation (October 22, 2025)
 1. **Complete Layout**: Full-featured presentation page with centered logo, headline, navigation, showcase, and footer
 2. **Clean Design**: Black background with large white Takeoff Monkey logo at top
-3. **Navigation System**: Five navigation links - See the deck (slidedeck), Our Story, Whitepaper (PDF), Demo (external link), Widgets
-4. **Interactive Components**: Slideshow component and email capture modal with Google Sheets integration
+3. **Navigation System**: Five navigation links - See the deck (slidedeck), Our Story, Whitepaper (PDF - TOM_Deck_2025_10_30.pdf), Demo (external link), Widgets
+4. **Interactive Components**: Slideshow component with 4 cropped demo screenshots (1200x675px) cycling every 10 seconds, and email capture modal with Google Sheets integration
 5. **Brand Styling**: High-contrast white text on black with yellow (#E9E44C) accent color on hover
 6. **Responsive Design**: Mobile-first layout that adapts to all screen sizes
 
