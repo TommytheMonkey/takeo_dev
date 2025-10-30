@@ -43,22 +43,22 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 ### Whiteboard Area
 - Main route at `/whiteboard` with complete presentation layout
 - Features:
-  - Jungle header image with Takeoff Monkey logo and green leaves
+  - Large white Takeoff Monkey logo centered at top
   - "Takeo: pre-construction, unjammed" headline in white
-  - Five navigation links to sub-sections
+  - Five navigation links: See the deck, Our Story, Whitepaper, Demo, Widgets
   - Showcase area with slideshow component (ready for demo screenshots)
-  - "Get Updates" CTA with email capture modal
+  - "Get Updates" CTA with email capture modal (Google Sheets integration)
   - Footer with copyright and link to www.takeoffmonkey.com
   - Black background with white text throughout
-- Sub-routes:
+- Navigation:
   - `/whiteboard/slidedeck` - Full-screen slide deck viewer (13 slides)
   - `/whiteboard/story` - Our Story (placeholder)
-  - `/whiteboard/prospectus` - Prospectus (placeholder)
-  - `/whiteboard/demo` - Demo (placeholder)
+  - `/takeo-whitepaper.pdf` - Whitepaper PDF (opens in new tab)
+  - `https://bid-manager-2-logan14.replit.app/` - Demo (external link)
   - `/whiteboard/widgets` - Widgets (placeholder)
 - Components:
   - `Slideshow.tsx` - Accepts array of image URLs for demo screenshots
-  - `EmailCapture.tsx` - Name and email form with fake submit handler
+  - `EmailCapture.tsx` - Name, company name, and email form with Google Sheets integration
 
 ### Full-Screen Slide Deck Viewer
 - Route: `/whiteboard/slidedeck`
@@ -87,10 +87,10 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 5. **Font Configuration**: Montserrat Extra Bold (800 weight) used throughout
 
 ### Whiteboard Section Implementation (October 22, 2025)
-1. **Complete Layout**: Full-featured presentation page with header, navigation, showcase, and footer
-2. **Jungle Theme Design**: Black background with jungle header image featuring Takeoff Monkey logo
-3. **Navigation System**: Five sub-routes with placeholder pages (slidedeck, story, prospectus, demo, widgets)
-4. **Interactive Components**: Slideshow component and email capture modal
+1. **Complete Layout**: Full-featured presentation page with centered logo, headline, navigation, showcase, and footer
+2. **Clean Design**: Black background with large white Takeoff Monkey logo at top
+3. **Navigation System**: Five navigation links - See the deck (slidedeck), Our Story, Whitepaper (PDF), Demo (external link), Widgets
+4. **Interactive Components**: Slideshow component and email capture modal with Google Sheets integration
 5. **Brand Styling**: High-contrast white text on black with yellow (#E9E44C) accent color on hover
 6. **Responsive Design**: Mobile-first layout that adapts to all screen sizes
 
