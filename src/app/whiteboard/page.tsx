@@ -41,26 +41,26 @@ export default function WhiteboardPage() {
             </h1>
             
             <nav className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 text-sm md:text-base">
-              <Link 
-                href="/whiteboard/slidedeck" 
-                className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
-              >
-                See the deck
-              </Link>
-              <Link 
-                href="/whiteboard/story" 
-                className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
-              >
-                Our Story
-              </Link>
               <a 
                 href="/TOM_Deck_2025_10_30.pdf" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
               >
-                Whitepaper
+                See the deck
               </a>
+              <Link 
+                href="/whiteboard/story" 
+                className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
+              >
+                Our Story
+              </Link>
+              <Link 
+                href="/whiteboard/slidedeck" 
+                className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
+              >
+                Whitepaper
+              </Link>
               <a 
                 href="https://bid-manager-2-logan14.replit.app/" 
                 target="_blank"
