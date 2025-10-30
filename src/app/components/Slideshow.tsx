@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 interface SlideshowProps {
@@ -9,6 +9,17 @@ interface SlideshowProps {
 
 export default function Slideshow({ images = [] }: SlideshowProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Auto-cycle every 10 seconds
+  useEffect(() => {
+    if (images.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 10000); // 10 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   if (images.length === 0) {
     return (
@@ -36,6 +47,7 @@ export default function Slideshow({ images = [] }: SlideshowProps) {
           alt={`Slide ${currentIndex + 1}`}
           fill
           className="object-contain"
+          priority={currentIndex === 0}
         />
       </div>
       

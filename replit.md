@@ -57,7 +57,7 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
   - `https://bid-manager-2-logan14.replit.app/` - Demo (external link)
   - `/whiteboard/widgets` - Widgets (placeholder)
 - Components:
-  - `Slideshow.tsx` - Accepts array of image URLs for demo screenshots
+  - `Slideshow.tsx` - Auto-cycling slideshow with 4 demo screenshots (10 seconds per image), manual navigation controls
   - `EmailCapture.tsx` - Name, company name, and email form with Google Sheets integration
 
 ### Full-Screen Slide Deck Viewer
