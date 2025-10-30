@@ -8,19 +8,45 @@ interface EmailCaptureProps {
 
 export default function EmailCapture({ onClose }: EmailCaptureProps) {
   const [name, setName] = useState('');
+  const [company, setCompany] = useState('');
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', { name, email });
-    setSubmitted(true);
-    setTimeout(() => {
-      setName('');
-      setEmail('');
-      setSubmitted(false);
-      onClose?.();
-    }, 2000);
+    setError('');
+    
+    try {
+      const response = await fetch('/api/submit-contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          name, 
+          company,
+          email,
+          dateAdded: new Date().toISOString()
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit');
+      }
+
+      setSubmitted(true);
+      setTimeout(() => {
+        setName('');
+        setCompany('');
+        setEmail('');
+        setSubmitted(false);
+        onClose?.();
+      }, 2000);
+    } catch (err) {
+      setError('Something went wrong. Please try again.');
+      console.error('Form submission error:', err);
+    }
   };
 
   return (
@@ -49,6 +75,21 @@ export default function EmailCapture({ onClose }: EmailCaptureProps) {
           </div>
           
           <div>
+            <label htmlFor="company" className="block text-sm font-semibold mb-2">
+              Company Name
+            </label>
+            <input
+              type="text"
+              id="company"
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors duration-150"
+              placeholder="Your company"
+            />
+          </div>
+          
+          <div>
             <label htmlFor="email" className="block text-sm font-semibold mb-2">
               Email
             </label>
@@ -62,6 +103,10 @@ export default function EmailCapture({ onClose }: EmailCaptureProps) {
               placeholder="your@email.com"
             />
           </div>
+          
+          {error && (
+            <p className="text-red-600 text-sm text-center">{error}</p>
+          )}
           
           <button
             type="submit"
