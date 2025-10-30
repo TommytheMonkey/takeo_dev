@@ -55,12 +55,14 @@ export default function WhiteboardPage() {
               >
                 Our Story
               </Link>
-              <Link 
-                href="/whiteboard/slidedeck" 
+              <a 
+                href="/Takeo_Whitepaper_2025.pdf" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
               >
                 Whitepaper
-              </Link>
+              </a>
               <a 
                 href="https://bid-manager-2-logan14.replit.app/" 
                 target="_blank"

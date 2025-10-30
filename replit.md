@@ -51,11 +51,12 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
   - Footer with copyright and link to www.takeoffmonkey.com
   - Black background with white text throughout
 - Navigation:
-  - `/whiteboard/slidedeck` - Full-screen slide deck viewer (13 slides)
-  - `/whiteboard/story` - Our Story (placeholder)
-  - `/takeo-whitepaper.pdf` - Whitepaper PDF (opens in new tab)
-  - `https://bid-manager-2-logan14.replit.app/` - Demo (external link)
-  - `/whiteboard/widgets` - Widgets (placeholder)
+  - "See the deck" - `/TOM_Deck_2025_10_30.pdf` - Pitch deck PDF (opens in new tab)
+  - "Our Story" - `/whiteboard/story` - Our Story (placeholder)
+  - "Whitepaper" - `/Takeo_Whitepaper_2025.pdf` - Takeo whitepaper PDF (opens in new tab)
+  - "Demo" - `https://bid-manager-2-logan14.replit.app/` - External demo link
+  - "Widgets" - `/whiteboard/widgets` - Widgets (placeholder)
+  - `/whiteboard/slidedeck` - Full-screen slide deck viewer (13 slides) - accessible via direct URL
 - Components:
   - `Slideshow.tsx` - Auto-cycling slideshow with 4 demo screenshots (10 seconds per image), manual navigation controls
   - `EmailCapture.tsx` - Name, company name, and email form with Google Sheets integration
