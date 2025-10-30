@@ -21,22 +21,26 @@ export default function WhiteboardPage() {
 
   return (
     <div className="min-h-screen bg-black">
-      {/* Jungle Header Image - Full Width */}
+      {/* Jungle Leaves - Continuous Across Top */}
       <div className="w-full overflow-hidden bg-black">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img 
           src="/header-jungle.png" 
-          alt="Takeoff Monkey" 
-          className="block"
-          style={{ 
-            width: '110%', 
-            marginLeft: '-5%',
-            marginRight: '-5%',
-            marginTop: '-2%',
-            marginBottom: '-2%',
-            maxWidth: 'none'
-          }}
+          alt="Jungle leaves" 
+          className="block w-full h-24 md:h-32 object-cover object-center"
         />
+      </div>
+
+      {/* Logo Centered Below Leaves */}
+      <div className="w-full bg-black py-8 md:py-12">
+        <div className="flex justify-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img 
+            src="/tkm-logo-white.png" 
+            alt="Takeoff Monkey" 
+            className="h-16 md:h-20 lg:h-24 w-auto"
+          />
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto">
