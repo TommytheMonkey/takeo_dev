@@ -25,20 +25,20 @@ export default function WhiteboardPage() {
       <div className="w-full overflow-hidden bg-black">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img 
-          src="/header-jungle.png" 
+          src="/header-jungle-clean.png" 
           alt="Jungle leaves" 
           className="block w-full h-24 md:h-32 object-cover object-center"
         />
       </div>
 
       {/* Logo Centered Below Leaves */}
-      <div className="w-full bg-black py-8 md:py-12">
+      <div className="w-full bg-black py-10 md:py-14">
         <div className="flex justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
             src="/tkm-logo-white.png" 
             alt="Takeoff Monkey" 
-            className="h-16 md:h-20 lg:h-24 w-auto"
+            className="h-24 md:h-28 lg:h-32 w-auto"
           />
         </div>
       </div>
