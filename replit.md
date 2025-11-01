@@ -61,6 +61,23 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
   - `Slideshow.tsx` - Auto-cycling slideshow with 4 demo screenshots (10 seconds per image), manual navigation controls
   - `EmailCapture.tsx` - Name, company name, and email form with Google Sheets integration
 
+### AI Chatbot (November 1, 2025)
+- **Platform**: N8N.io chatbot with vectorstore integration
+- **Location**: Whiteboard page only (behind password protection)
+- **Webhook URL**: https://takeoffmonkey.app.n8n.cloud/webhook/chatbotv
+- **Features**:
+  - Floating chat bubble in bottom corner
+  - Streaming responses enabled
+  - Session history persistence
+  - Custom branding with Takeo colors (black header, yellow accent, white messages)
+  - Welcome message: "Hi! I'm here to help you learn about Takeo. Ask me anything!"
+- **Styling**: Matches site brand with black (#000000) header, yellow (#E9E44C) user messages, white bot responses
+- **Implementation**: Official @n8n/chat library via CDN with custom CSS variables
+
+**Important N8N Configuration Required:**
+- In your N8N Chat Trigger node, add `takeo.dev` and your Replit development domain to the **Allowed Origins (CORS)** field
+- This allows the website to communicate with your chatbot securely
+
 ### Full-Screen Slide Deck Viewer
 - Route: `/whiteboard/slidedeck`
 - Features:
@@ -91,9 +108,10 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 1. **Complete Layout**: Full-featured presentation page with centered logo, headline, navigation, showcase, and footer
 2. **Clean Design**: Black background with large white Takeoff Monkey logo at top
 3. **Navigation System**: Five navigation links - See the deck (slidedeck), Our Story, Whitepaper (PDF - TOM_Deck_2025_10_30.pdf), Demo (external link), Widgets
-4. **Interactive Components**: Slideshow component with 4 cropped demo screenshots (1200x675px) cycling every 10 seconds, and email capture modal with Google Sheets integration
+4. **Interactive Components**: Slideshow component with 4 cropped demo screenshots (1200x675px) cycling every 10 seconds, email capture modal with Google Sheets integration, and N8N AI chatbot
 5. **Brand Styling**: High-contrast white text on black with yellow (#E9E44C) accent color on hover
 6. **Responsive Design**: Mobile-first layout that adapts to all screen sizes
+7. **AI Chatbot**: N8N chatbot integration with custom branding matching site colors (November 1, 2025)
 
 ### Slide Deck Viewer Implementation (October 22, 2025)
 1. **Full-Screen Experience**: True full-window viewer (100vw × 100vh) with black background
