@@ -1,0 +1,233 @@
+import os
+import pandas as pd
+import pandasai as pai
+from pandasai_litellm.litellm import LiteLLM
+from dotenv import load_dotenv
+import boto3
+from slack_bolt import App
+from slack_bolt.adapter.socket_mode import SocketModeHandler
+
+# ----------------------
+# ENVIRONMENT VARIABLES
+# ----------------------
+load_dotenv()
+
+SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
+SLACK_APP_TOKEN = os.getenv("SLACK_APP_TOKEN")
+OPEN_AI_API_KEY = os.getenv("OPEN_AI_API_KEY")
+
+AWS_ACCESS_KEY = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+AWS_REGION = os.getenv("AWS_REGION")
+DYNAMO_TABLE_NAME = os.getenv("DYNAMO_TABLE_NAME")
+
+# ----------------------
+# CONSTANTS
+# ----------------------
+DATE_COLUMNS = [
+    "Due Date", "Rec'd Date", "Comp. Date", "Delivered Date", "Customer Due Date"
+]
+
+CHANNEL_FILTERS = {
+    "C034C6V52DP": {"Client Name": "Central Texas Proscapes"},
+    "C08LGP84RMH": {"Client Name": "HLS"},
+    "C08JEHW4DNC": {"Client Name": "Ewing Irrigation & Landscape Supply"},
+    "C09085WGE9G": {"Client Name": "Ewing Irrigation & Landscape Supply"},
+    "C08LQRNNRC2": {"Client Name": "Ewing Irrigation & Landscape Supply"},
+    "C08L7SS19B9": {"Client Name": "Ewing Irrigation & Landscape Supply"},
+    "C08N88F97BQ": {"Client Name": "Ewing Irrigation & Landscape Supply"},
+    "C08QMQFNSG4": {"Client Name": "Ewing Irrigation & Landscape Supply"},
+    "C08L3V266F3": {"Client Name": "Ewing Irrigation & Landscape Supply"}
+}
+
+CLIENT_COL = "Client Name (text, recast)"
+EWING_CLIENT = "ewing irrigation & landscape supply"
+HLS_CLIENT = "hls"
+
+# ----------------------
+# INITIALIZATIONS
+# ----------------------
+app = App(token=SLACK_BOT_TOKEN)
+
+dynamodb = boto3.resource(
+    "dynamodb",
+    region_name=AWS_REGION,
+    aws_access_key_id=AWS_ACCESS_KEY,
+    aws_secret_access_key=AWS_SECRET_KEY,
+)
+
+llm = LiteLLM(model="gpt-4.1-mini", api_key=OPEN_AI_API_KEY)
+
+# ----------------------
+# UTILITY FUNCTIONS
+# ----------------------
+def get_dynamo_table_df(table_name):
+    """Fetch full table data from DynamoDB into a DataFrame"""
+    table = dynamodb.Table(table_name)
+    response = table.scan()
+    data = response["Items"]
+    while "LastEvaluatedKey" in response:
+        response = table.scan(ExclusiveStartKey=response["LastEvaluatedKey"])
+        data.extend(response["Items"])
+    return pd.DataFrame(data)
+
+
+def get_mapping_table(table_name, key_col, value_col):
+    """Fetch a mapping table from DynamoDB and return as a dict"""
+    table = dynamodb.Table(table_name)
+    response = table.scan()
+    items = response["Items"]
+    while "LastEvaluatedKey" in response:
+        response = table.scan(ExclusiveStartKey=response["LastEvaluatedKey"])
+        items.extend(response["Items"])
+    return {item[key_col]: item[value_col] for item in items}
+
+
+def filter_data_by_channel(channel_id, df):
+    """Filter data by Slack channel's client association"""
+    filters = CHANNEL_FILTERS.get(channel_id)
+    if not filters:
+        return df
+    for col, val in filters.items():
+        if col in df.columns:
+            df = df[df[col] == val]
+    return df
+
+
+# ----------------------
+# SLACK EVENT HANDLER
+# ----------------------
+@app.event("app_mention")
+def handle_app_mention(event, say, client):
+    prompt = event['text']
+    channel = event['channel']
+    user = event.get('user')
+
+    bot_user_id = event['blocks'][0]['elements'][0]['elements'][0]['user_id']
+    question = prompt.replace(f'<@{bot_user_id}>', '').strip()
+
+    if channel == "C034C6V52DP":  # Central Texas Proscapes
+        df = ctx_proscapes.copy()
+    elif channel in {
+        "C08JEHW4DNC", "C09085WGE9G", "C08LQRNNRC2", "C08L7SS19B9", "C08N88F97BQ",
+        "C08QMQFNSG4", "C08L3V266F3"  #, "C08SLQ1J952"  #  C08SLQ1J952 = tech_testing (temp for testing)
+    }:  # Ewing Channels
+        df = main_data[main_data[CLIENT_COL] == EWING_CLIENT].copy()
+        print(f"Ewing Filter applied... {len(df)} rows pulled..")
+    elif channel == "C08LGP84RMH":  #  HLS channel
+        df = main_data[main_data[CLIENT_COL].str.contains(HLS_CLIENT, na=False)].copy()
+        print(f"HLS filter applied... {len(df)} rows pulled..")
+    else:
+        df = main_data.copy()
+
+    pai_df = pai.DataFrame(df)
+
+    try:
+        response = pai_df.chat(question)
+
+        print("Response object type:", type(response), "Value:", response)
+        if hasattr(response, "charts") and response.charts:
+            chart_path = response.charts[0]
+            # Upload the file and get the file info
+            upload_response = client.files_upload(
+                channels=[channel],
+                file=chart_path,
+                title="Your chart"
+            )
+            file_info = upload_response['file']
+            image_url = file_info['url_private']
+            # Post a message with the image embedded inline
+            client.chat_postMessage(
+                channel=channel,
+                blocks=[
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": f"<@{user}> Here's your chart:"
+                        }
+                    },
+                    {
+                        "type": "image",
+                        "image_url": image_url,
+                        "alt_text": "Generated chart"
+                    }
+                ],
+                text=f"<@{user}> Here's your chart."
+            )
+        elif isinstance(response, str) and ".png" in response.strip().lower():
+            chart_path = response.strip()
+            if os.path.exists(chart_path):
+                # Upload the file and get the file info
+                upload_response = client.files_upload(
+                    channels=[channel],
+                    file=chart_path,
+                    title="Your chart"
+                )
+                file_info = upload_response['file']
+                image_url = file_info['url_private']
+                # Post a message with the image embedded inline
+                client.chat_postMessage(
+                    channel=channel,
+                    blocks=[
+                        {
+                            "type": "section",
+                            "text": {
+                                "type": "mrkdwn",
+                                "text": f"<@{user}> Here's your chart:"
+                            }
+                        },
+                        {
+                            "type": "image",
+                            "image_url": image_url,
+                            "alt_text": "Generated chart"
+                        }
+                    ],
+                    text=f"<@{user}> Here's your chart."
+                )
+            else:
+                say(f"<@{user}> I found a file path but the file doesn’t exist: `{chart_path}`")
+        else:
+            say(f"<@{user}> {response}")
+
+    except Exception as e:
+        print(f"error: {e}")
+        say(f"<@{user}> I can't do that right now because I've shit myself: {e}")
+
+
+
+# main loop
+if __name__ == "__main__":
+    import sys
+    print("Loading WLIII data from DynamoDB...")
+    main_data = get_dynamo_table_df(DYNAMO_TABLE_NAME)
+    print("Loading CTX data from DynamoDB...")
+    ctx_proscapes = get_dynamo_table_df("CTX_Proscapes")
+
+    main_data[CLIENT_COL] = main_data[CLIENT_COL].astype(str).str.strip().str.lower()
+
+    # Apply mappings
+    column_renames = get_mapping_table("column_renames", "column_id", "friendly_name")
+    column_descriptions = get_mapping_table("column_descriptions", "column_id", "description")
+    job_type_map = get_mapping_table("job_type_map", "job_type", "description")
+    status_map = get_mapping_table("status_map", "status", "description")
+
+    main_data = main_data.rename(columns=column_renames)
+
+    for col in DATE_COLUMNS:
+        if col in main_data.columns:
+            main_data[col] = main_data[col].replace("", pd.NA)
+            main_data[col] = pd.to_datetime(main_data[col], errors='coerce')
+
+    pai.config.set({
+        "llm": llm,
+        "column_descriptions": column_descriptions,
+        "description": (
+            "This table contains records of projects. "
+            f"Job type meanings: {job_type_map}. Status meanings: {status_map}."
+        ),
+        "verbose": True
+    })
+
+    print("Starting Slack Bolt app...")
+    SocketModeHandler(app, SLACK_APP_TOKEN).start()
