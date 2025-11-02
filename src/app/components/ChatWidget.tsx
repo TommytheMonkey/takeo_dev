@@ -48,7 +48,7 @@ export default function ChatWidget() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://datachimp-92acd93438e1.herokuapp.com/chat', {
+      const response = await fetch('https://takeo-datachimp-fa61a1231fc1.herokuapp.com/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

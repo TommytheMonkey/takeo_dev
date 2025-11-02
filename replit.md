@@ -64,7 +64,7 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 ### AI Chatbot (November 2, 2025)
 - **Platform**: Custom React chatbot connected to PandasAI on Heroku
 - **Location**: Whiteboard page only (behind password protection)
-- **API Endpoint**: https://datachimp-92acd93438e1.herokuapp.com/chat
+- **API Endpoint**: https://takeo-datachimp-fa61a1231fc1.herokuapp.com/chat
 - **Features**:
   - Floating yellow chat bubble in bottom-right corner
   - Real-time responses from PandasAI analyzing DynamoDB project data

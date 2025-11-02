@@ -1,0 +1,103 @@
+(.venv) tommylather@Tommy-MBP-2108 PythonProject % heroku logs --tail --app takeo-datachimp       
+ ›   Warning: heroku update available from 10.7.0 to 10.13.2.
+2025-11-02T17:09:20.362337+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-02T17:09:20.362337+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/util.py", line 370, in import_app
+2025-11-02T17:09:20.362337+00:00 app[web.1]: mod = importlib.import_module(module)
+2025-11-02T17:09:20.362337+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-02T17:09:20.362338+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2025-11-02T17:09:20.362340+00:00 app[web.1]: return _bootstrap._gcd_import(name[level:], package, level)
+2025-11-02T17:09:20.362341+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-02T17:09:20.362341+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2025-11-02T17:09:20.362341+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2025-11-02T17:09:20.362341+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2025-11-02T17:09:20.362342+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2025-11-02T17:09:20.362342+00:00 app[web.1]: File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+2025-11-02T17:09:20.362342+00:00 app[web.1]: File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+2025-11-02T17:09:20.362343+00:00 app[web.1]: File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+2025-11-02T17:09:20.362343+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2025-11-02T17:09:20.362343+00:00 app[web.1]: File "/app/app.py", line 167
+2025-11-02T17:09:20.362343+00:00 app[web.1]: global column_descriptions, job_type_map, status_map, PANDASAI_CONFIG
+2025-11-02T17:09:20.362343+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-02T17:09:20.362343+00:00 app[web.1]: SyntaxError: name 'column_descriptions' is assigned to before global declaration
+2025-11-02T17:09:20.362458+00:00 app[web.1]: [2025-11-02 17:09:20 +0000] [9] [INFO] Worker exiting (pid: 9)
+2025-11-02T17:09:20.405106+00:00 app[web.1]: [2025-11-02 17:09:20 +0000] [2] [ERROR] Worker (pid:9) exited with code 3
+2025-11-02T17:09:20.405511+00:00 app[web.1]: [2025-11-02 17:09:20 +0000] [2] [ERROR] Shutting down: Master
+2025-11-02T17:09:20.405540+00:00 app[web.1]: [2025-11-02 17:09:20 +0000] [2] [ERROR] Reason: Worker failed to boot.
+2025-11-02T17:09:20.503567+00:00 heroku[web.1]: Process exited with status 3
+2025-11-02T17:09:20.551099+00:00 heroku[web.1]: State changed from starting to crashed
+2025-11-02T17:09:37.000000+00:00 app[api]: Build succeeded
+2025-11-02T17:09:54.096086+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/status" host=takeo-datachimp-fa61a1231fc1.herokuapp.com request_id=3efcfac9-359f-217e-1413-f228b691ae54 fwd="" dyno= connect=0ms service=0ms status=503 bytes=567 protocol=http1.1 tls=true tls_version=unknown
+2025-11-02T17:10:12.255965+00:00 app[api]: Log session created by user tommy@takeoffmonkey.com
+2025-11-02T17:14:24.278759+00:00 heroku[web.1]: State changed from crashed to starting
+2025-11-02T17:14:35.634560+00:00 heroku[web.1]: Starting process with command `gunicorn app:app --workers=1 --threads=8 --timeout=120`
+2025-11-02T17:14:36.396365+00:00 app[web.1]: Python buildpack: Detected 512 MB available memory and 8 CPU cores.
+2025-11-02T17:14:36.396469+00:00 app[web.1]: Python buildpack: Defaulting WEB_CONCURRENCY to 2 based on the available memory.
+2025-11-02T17:14:36.597144+00:00 app[web.1]: [2025-11-02 17:14:36 +0000] [2] [INFO] Starting gunicorn 23.0.0
+2025-11-02T17:14:36.597378+00:00 app[web.1]: [2025-11-02 17:14:36 +0000] [2] [INFO] Listening at: http://0.0.0.0:45945 (2)
+2025-11-02T17:14:36.597418+00:00 app[web.1]: [2025-11-02 17:14:36 +0000] [2] [INFO] Using worker: gthread
+2025-11-02T17:14:36.599417+00:00 app[web.1]: [2025-11-02 17:14:36 +0000] [9] [INFO] Booting worker with pid: 9
+2025-11-02T17:14:36.604085+00:00 app[web.1]: [2025-11-02 17:14:36 +0000] [9] [ERROR] Exception in worker process
+2025-11-02T17:14:36.604086+00:00 app[web.1]: Traceback (most recent call last):
+2025-11-02T17:14:36.604086+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+2025-11-02T17:14:36.604087+00:00 app[web.1]: worker.init_process()
+2025-11-02T17:14:36.604087+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/workers/gthread.py", line 94, in init_process
+2025-11-02T17:14:36.604087+00:00 app[web.1]: super().init_process()
+2025-11-02T17:14:36.604088+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/workers/base.py", line 135, in init_process
+2025-11-02T17:14:36.604089+00:00 app[web.1]: self.load_wsgi()
+2025-11-02T17:14:36.604089+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+2025-11-02T17:14:36.604089+00:00 app[web.1]: self.wsgi = self.app.wsgi()
+2025-11-02T17:14:36.604090+00:00 app[web.1]: ^^^^^^^^^^^^^^^
+2025-11-02T17:14:36.604090+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/app/base.py", line 66, in wsgi
+2025-11-02T17:14:36.604090+00:00 app[web.1]: self.callable = self.load()
+2025-11-02T17:14:36.604090+00:00 app[web.1]: ^^^^^^^^^^^
+2025-11-02T17:14:36.604097+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+2025-11-02T17:14:36.604097+00:00 app[web.1]: return self.load_wsgiapp()
+2025-11-02T17:14:36.604097+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^
+2025-11-02T17:14:36.604097+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+2025-11-02T17:14:36.604098+00:00 app[web.1]: return util.import_app(self.app_uri)
+2025-11-02T17:14:36.604098+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-02T17:14:36.604098+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/util.py", line 370, in import_app
+2025-11-02T17:14:36.604098+00:00 app[web.1]: mod = importlib.import_module(module)
+2025-11-02T17:14:36.604099+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-02T17:14:36.604099+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2025-11-02T17:14:36.604100+00:00 app[web.1]: return _bootstrap._gcd_import(name[level:], package, level)
+2025-11-02T17:14:36.604100+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-02T17:14:36.604100+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2025-11-02T17:14:36.604101+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2025-11-02T17:14:36.604101+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2025-11-02T17:14:36.604101+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2025-11-02T17:14:36.604102+00:00 app[web.1]: File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+2025-11-02T17:14:36.604102+00:00 app[web.1]: File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+2025-11-02T17:14:36.604102+00:00 app[web.1]: File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+2025-11-02T17:14:36.604102+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2025-11-02T17:14:36.604103+00:00 app[web.1]: File "/app/app.py", line 167
+2025-11-02T17:14:36.604103+00:00 app[web.1]: global column_descriptions, job_type_map, status_map, PANDASAI_CONFIG
+2025-11-02T17:14:36.604103+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-02T17:14:36.604103+00:00 app[web.1]: SyntaxError: name 'column_descriptions' is assigned to before global declaration
+2025-11-02T17:14:36.604144+00:00 app[web.1]: [2025-11-02 17:14:36 +0000] [9] [INFO] Worker exiting (pid: 9)
+2025-11-02T17:14:36.622672+00:00 app[web.1]: [2025-11-02 17:14:36 +0000] [2] [ERROR] Worker (pid:9) exited with code 3
+2025-11-02T17:14:36.622896+00:00 app[web.1]: [2025-11-02 17:14:36 +0000] [2] [ERROR] Shutting down: Master
+2025-11-02T17:14:36.622922+00:00 app[web.1]: [2025-11-02 17:14:36 +0000] [2] [ERROR] Reason: Worker failed to boot.
+2025-11-02T17:14:36.685273+00:00 heroku[web.1]: Process exited with status 3
+2025-11-02T17:14:36.711162+00:00 heroku[web.1]: State changed from starting to crashed
+2025-11-02T17:18:57.000000+00:00 app[api]: Build started by user tommy@takeoffmonkey.com
+2025-11-02T17:19:29.796679+00:00 app[api]: Release v12 created by user tommy@takeoffmonkey.com
+2025-11-02T17:19:29.796679+00:00 app[api]: Deploy 060cf390 by user tommy@takeoffmonkey.com
+2025-11-02T17:19:30.010286+00:00 heroku[web.1]: State changed from crashed to starting
+2025-11-02T17:19:41.374825+00:00 heroku[web.1]: Starting process with command `gunicorn app:app --workers=1 --threads=8 --timeout=120`
+2025-11-02T17:19:42.098996+00:00 app[web.1]: Python buildpack: Detected 512 MB available memory and 8 CPU cores.
+2025-11-02T17:19:42.099085+00:00 app[web.1]: Python buildpack: Defaulting WEB_CONCURRENCY to 2 based on the available memory.
+2025-11-02T17:19:42.303773+00:00 app[web.1]: [2025-11-02 17:19:42 +0000] [2] [INFO] Starting gunicorn 23.0.0
+2025-11-02T17:19:42.304014+00:00 app[web.1]: [2025-11-02 17:19:42 +0000] [2] [INFO] Listening at: http://0.0.0.0:38663 (2)
+2025-11-02T17:19:42.304047+00:00 app[web.1]: [2025-11-02 17:19:42 +0000] [2] [INFO] Using worker: gthread
+2025-11-02T17:19:42.306009+00:00 app[web.1]: [2025-11-02 17:19:42 +0000] [9] [INFO] Booting worker with pid: 9
+2025-11-02T17:19:42.578868+00:00 heroku[web.1]: State changed from starting to up
+2025-11-02T17:19:44.780304+00:00 app[web.1]: [Boot] Loading main data from DynamoDB…
+2025-11-02T17:19:55.719486+00:00 app[web.1]: [Boot] Applying mappings…
+2025-11-02T17:19:56.075726+00:00 app[web.1]: [Boot] Data loaded. Rows: 23,831
+2025-11-02T17:19:56.075757+00:00 app[web.1]: [Boot] Initialization complete. Ready to accept requests.
+2025-11-02T17:20:01.000000+00:00 app[api]: Build succeeded
+2025-11-02T17:20:08.899311+00:00 app[web.1]: 10.1.2.205 - - [02/Nov/2025:17:20:08 +0000] "GET /status HTTP/1.1" 200 50 "-" "curl/8.7.1"
+2025-11-02T17:20:08.899377+00:00 heroku[router]: at=info method=GET path="/status" host=takeo-datachimp-fa61a1231fc1.herokuapp.com request_id=8dde8154-125f-7515-600f-74b67c6ba83f fwd="99.116.102.39" dyno=web.1 connect=0ms service=3ms status=200 bytes=50 protocol=http1.1 tls=true tls_version=unknown
+2025-11-02T17:22:27.134112+00:00 app[api]: Log session created by user tommy@takeoffmonkey.com
+2025-11-02T17:23:55.915688+00:00 app[api]: Log session created by user tommy@takeoffmonkey.com
