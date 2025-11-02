@@ -1,0 +1,284 @@
+#!/usr/bin/env python3
+"""
+Datachimp Web API (no Slack)
+POST /chat { "query": "..." } -> { ok, response, image_base64? }
+"""
+
+import os
+import base64
+from typing import Dict, Any, Optional
+
+import pandas as pd
+import pandasai as pai
+from dotenv import load_dotenv
+import boto3
+
+import traceback
+
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+
+
+# After CORS imports, add PandasAI imports (on separate lines)
+from pandasai import SmartDataframe
+from pandasai.llm.openai import OpenAI
+
+
+column_descriptions = {}
+job_type_map = {}
+status_map = {}
+PANDASAI_CONFIG = {}
+
+# ----------------------
+# ENV
+# ----------------------
+load_dotenv()
+
+OPEN_AI_API_KEY   = os.getenv("OPEN_AI_API_KEY")
+
+AWS_ACCESS_KEY    = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_KEY    = os.getenv("AWS_SECRET_ACCESS_KEY")
+AWS_REGION        = os.getenv("AWS_REGION", "us-east-1")
+DYNAMO_TABLE_NAME = os.getenv("DYNAMO_TABLE_NAME", "Work_Log_III")
+
+# CORS allow-list (adjust as needed)
+CORS_ORIGINS = os.getenv(
+    "CORS_ORIGINS",
+    "https://takeo.dev, https://*.replit.dev, http://localhost:3000, http://localhost:5173"
+)
+
+# Also set the conventional var so any sub-lib can find it
+if OPEN_AI_API_KEY and not os.getenv("OPENAI_API_KEY"):
+    os.environ["OPENAI_API_KEY"] = OPEN_AI_API_KEY
+
+# PandasAI / plotting headless
+os.environ.setdefault("MPLBACKEND", "Agg")
+
+if not OPEN_AI_API_KEY:
+    print("[Warn] OPEN_AI_API_KEY is not set. PandasAI will fail when invoked.")
+
+# ----------------------
+# CONSTANTS
+# ----------------------
+DATE_COLUMNS = ["Due Date", "Rec'd Date", "Comp. Date", "Delivered Date", "Customer Due Date"]
+CLIENT_COL   = "Client Name (text, recast)"  # kept for normalization only (no filtering)
+
+# ----------------------
+# FLASK
+# ----------------------
+app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": [o.strip() for o in CORS_ORIGINS.split(",")]}})
+
+# ----------------------
+# GLOBALS
+# ----------------------
+dynamodb = None
+main_data: Optional[pd.DataFrame] = None
+
+BOOT_ERROR: Optional[str] = None
+
+# PandasAI mappings/config (set in boot())
+# Removed duplicate global variable block here
+
+# ----------------------
+# DATA HELPERS
+# ----------------------
+def get_dynamo_table_df(table_name: str) -> pd.DataFrame:
+    """Fetch full table data from DynamoDB into a DataFrame."""
+    table = dynamodb.Table(table_name)
+    response = table.scan()
+    data = response.get("Items", [])
+    while "LastEvaluatedKey" in response:
+        response = table.scan(ExclusiveStartKey=response["LastEvaluatedKey"])
+        data.extend(response.get("Items", []))
+    return pd.DataFrame(data)
+
+
+def get_mapping_table(table_name: str, key_col: str, value_col: str) -> Dict[str, Any]:
+    """Fetch a mapping table from DynamoDB and return as a dict."""
+    table = dynamodb.Table(table_name)
+    response = table.scan()
+    items = response.get("Items", [])
+    while "LastEvaluatedKey" in response:
+        response = table.scan(ExclusiveStartKey=response["LastEvaluatedKey"])
+        items.extend(response.get("Items", []))
+    return {item.get(key_col): item.get(value_col) for item in items if key_col in item and value_col in item}
+
+
+def pandasai_answer(question: str, df: pd.DataFrame) -> Dict[str, Any]:
+    """Run PandasAI on the given DataFrame. If a chart file path is returned, encode it as base64."""
+    try:
+        sdf = SmartDataframe(df, config=PANDASAI_CONFIG or {"llm": OpenAI(api_token=OPEN_AI_API_KEY), "verbose": True})
+        response = sdf.chat(question)
+    except Exception as e:
+        return {"ok": False, "error": f"PandasAI error: {e}"}
+
+    result: Dict[str, Any] = {"ok": True, "text": None, "image_base64": None}
+
+    def path_to_b64(pth: str) -> Optional[str]:
+        try:
+            if not pth or not os.path.exists(pth):
+                return None
+            with open(pth, "rb") as f:
+                return base64.b64encode(f.read()).decode("utf-8")
+        except Exception:
+            return None
+
+    # If PandasAI returns a chart path (common behavior)
+    if isinstance(response, str) and response.lower().strip().endswith((".png", ".jpg", ".jpeg")):
+        img_b64 = path_to_b64(response.strip())
+        result["text"] = "Here is your chart."
+        result["image_base64"] = img_b64
+        return result
+
+    # Otherwise coerce to string
+    result["text"] = str(response)
+    return result
+
+
+# ----------------------
+# BOOTSTRAP (runs on import)
+# ----------------------
+def boot():
+    global dynamodb, main_data
+
+    # AWS client
+    if not (AWS_ACCESS_KEY and AWS_SECRET_KEY and AWS_REGION):
+        print("[Boot] Missing AWS credentials or region")
+    dynamodb = boto3.resource(
+        "dynamodb",
+        region_name=AWS_REGION,
+        aws_access_key_id=AWS_ACCESS_KEY,
+        aws_secret_access_key=AWS_SECRET_KEY,
+    )
+
+    print("[Boot] Loading main data from DynamoDB…")
+    df = get_dynamo_table_df(DYNAMO_TABLE_NAME)
+
+    # Normalize known columns (no filtering)
+    if CLIENT_COL in df.columns:
+        df[CLIENT_COL] = df[CLIENT_COL].astype(str).str.strip().str.lower()
+
+    # Friendly names / descriptions
+    print("[Boot] Applying mappings…")
+    column_renames      = get_mapping_table("column_renames", "column_id", "friendly_name")
+    column_descriptions.clear()
+    column_descriptions.update(get_mapping_table("column_descriptions", "column_id", "description"))
+    job_type_map.clear()
+    job_type_map.update(get_mapping_table("job_type_map", "job_type", "description"))
+    status_map.clear()
+    status_map.update(get_mapping_table("status_map", "status", "description"))
+
+    df.rename(columns=column_renames, inplace=True)
+
+    for col in DATE_COLUMNS:
+        if col in df.columns:
+            df[col] = df[col].replace("", pd.NA)
+            df[col] = pd.to_datetime(df[col], errors="coerce")
+
+    # Build PandasAI config
+    llm = OpenAI(api_token=OPEN_AI_API_KEY)
+    PANDASAI_CONFIG.clear()
+    PANDASAI_CONFIG.update({
+        "llm": llm,
+        "verbose": True,
+        "save_charts": True,
+        "enable_cache": False,
+        "column_descriptions": column_descriptions,
+        "description": (
+            "This table contains records of projects. "
+            f"Job type meanings: {job_type_map}. Status meanings: {status_map}."
+        ),
+    })
+
+    print(f"[Boot] Data loaded. Rows: {len(df):,}")
+    main_data = df
+    print("[Boot] Initialization complete. Ready to accept requests.")
+
+
+try:
+    boot()
+except Exception:
+    BOOT_ERROR = traceback.format_exc()
+    print("[Boot] FAILED, starting API without data. Error was:\n" + BOOT_ERROR)
+    # Ensure main_data is at least an empty DataFrame so routes don't explode
+    main_data = pd.DataFrame()
+
+# ----------------------
+# ROUTES
+# ----------------------
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({"ok": True, "message": "Datachimp API running", "routes": ["/ping", "/schema", "/chat"]}), 200
+
+
+@app.route("/status", methods=["GET"])
+def status():
+    global BOOT_ERROR, main_data
+    return jsonify({
+        "ok": BOOT_ERROR is None,
+        "boot_error": BOOT_ERROR,
+        "rows_loaded": None if main_data is None else int(len(main_data))
+    }), 200 if BOOT_ERROR is None else 503
+
+@app.route("/ping", methods=["GET"])
+def ping():
+    return jsonify({"ok": True, "service": "datachimp", "mode": "web"}), 200
+
+
+@app.route("/schema", methods=["GET"])
+def schema():
+    try:
+        cols = list(main_data.columns) if main_data is not None else []
+        return jsonify({"ok": True, "columns": cols}), 200
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/chat", methods=["POST"])
+def chat():
+    """
+    Body: { "query": "your question" }
+    Response: { "ok": true, "response": "...", "image_base64": "..." }
+    """
+    if main_data is None:
+        return jsonify({"ok": False, "error": "Data not loaded yet"}), 503
+
+    data = request.get_json(silent=True) or {}
+    question = data.get("query", "")
+    if not question.strip():
+        return jsonify({"ok": False, "error": "Missing 'query' in request body"}), 400
+
+    # Safety limit for giant tables (tune as needed)
+    df = main_data
+    if len(df) > 100_000:
+        df = df.sample(100_000, random_state=42)
+
+    result = pandasai_answer(question, df)
+    status = 200 if result.get("ok") else 500
+    return jsonify({
+        "ok": result.get("ok", False),
+        "response": result.get("text"),
+        "image_base64": result.get("image_base64")
+    }), status
+
+
+if __name__ == "__main__":
+    # Prefer $PORT (Heroku) else try a few common dev ports
+    preferred = os.getenv("PORT")
+    try_ports = [int(preferred)] if preferred and preferred.isdigit() else [5000, 5001, 8000, 8080]
+
+    for p in try_ports:
+        try:
+            print(f"[Web] Trying 0.0.0.0:{p} …")
+            app.run(host="0.0.0.0", port=p, threaded=True)
+            break
+        except OSError as e:
+            msg = str(e)
+            if "Address already in use" in msg:
+                print(f"[Web] Port {p} is in use. Trying next…")
+                continue
+            else:
+                raise
+    else:
+        print("[Web] No free port found. Set PORT env var to a free port (e.g., 5002) and rerun.")
