@@ -4,99 +4,13 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Slideshow from '../components/Slideshow';
 import EmailCapture from '../components/EmailCapture';
+import ChatWidget from '../components/ChatWidget';
 
 export default function WhiteboardPage() {
   const [showEmailModal, setShowEmailModal] = useState(false);
 
   useEffect(() => {
     document.body.classList.add('whiteboard-page-black');
-    
-    // Load N8N chat widget
-    const loadChatWidget = () => {
-      // Load stylesheet
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css';
-      document.head.appendChild(link);
-
-      // Load chat script
-      const script = document.createElement('script');
-      script.type = 'module';
-      script.textContent = `
-        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-        
-        createChat({
-          webhookUrl: 'https://takeoffmonkey.app.n8n.cloud/webhook/chatbotv',
-          mode: 'window',
-          showWelcomeScreen: true,
-          initialMessages: ["Hi! I'm here to help you learn about Takeo. Ask me anything!"],
-          loadPreviousSession: true,
-          streaming: true,
-          i18n: {
-            en: {
-              title: 'Takeo Assistant',
-              subtitle: 'Ask me anything about Takeo',
-              footer: '',
-              getStarted: 'Start Conversation',
-              inputPlaceholder: 'Type your message...',
-            }
-          }
-        });
-      `;
-      document.body.appendChild(script);
-      
-      // Add custom styling
-      const style = document.createElement('style');
-      style.textContent = `
-        :root {
-          --chat--color-primary: #E9E44C !important;
-          --chat--color-primary-shade-50: #F5F1D0 !important;
-          --chat--color-primary-shade-100: #F0EBBB !important;
-          --chat--color-secondary: #FFFFFF !important;
-          --chat--color-secondary-shade-50: #F8F8F8 !important;
-          --chat--color-white: #FFFFFF !important;
-          --chat--color-light: #F5F5F5 !important;
-          --chat--color-light-shade-50: #E0E0E0 !important;
-          --chat--color-light-shade-100: #D0D0D0 !important;
-          --chat--color-medium: #666666 !important;
-          --chat--color-dark: #000000 !important;
-          --chat--color-disabled: #999999 !important;
-          --chat--color-typing: #E9E44C !important;
-          
-          --chat--spacing: 1rem !important;
-          --chat--border-radius: 0.5rem !important;
-          --chat--transition-time: 0.15s !important;
-          
-          --chat--window--width: 400px !important;
-          --chat--window--height: 600px !important;
-          
-          --chat--header--height: 60px !important;
-          --chat--header--padding: 1rem !important;
-          --chat--header--background: #000000 !important;
-          --chat--header--color: #FFFFFF !important;
-          
-          --chat--message--font-size: 0.875rem !important;
-          --chat--message--padding: 0.75rem !important;
-          --chat--message--bot--background: #FFFFFF !important;
-          --chat--message--bot--color: #000000 !important;
-          --chat--message--bot--border: none !important;
-          --chat--message--user--background: #E9E44C !important;
-          --chat--message--user--color: #000000 !important;
-          --chat--message--user--border: none !important;
-          
-          --chat--input--background: #FFFFFF !important;
-          --chat--input--color: #000000 !important;
-          --chat--textarea--height: 50px !important;
-        }
-        
-        .chat-window-header {
-          font-weight: 800 !important;
-        }
-      `;
-      document.head.appendChild(style);
-    };
-
-    loadChatWidget();
     
     return () => {
       document.body.classList.remove('whiteboard-page-black');
@@ -216,6 +130,8 @@ export default function WhiteboardPage() {
           </div>
         </div>
       )}
+
+      <ChatWidget />
     </div>
   );
 }
