@@ -61,25 +61,23 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
   - `Slideshow.tsx` - Auto-cycling slideshow with 4 demo screenshots (10 seconds per image), manual navigation controls
   - `EmailCapture.tsx` - Name, company name, and email form with Google Sheets integration
 
-### AI Chatbot (November 2, 2025)
-- **Platform**: Custom React chatbot connected to PandasAI on Heroku
+### AI Chatbot (November 3, 2025)
+- **Platform**: N8N chatbot with vector store integration
 - **Location**: Whiteboard page only (behind password protection)
-- **API Endpoint**: https://takeo-datachimp-fa61a1231fc1.herokuapp.com/chat
+- **API Endpoint**: https://takeoffmonkey.app.n8n.cloud/webhook/chatbotv
 - **Features**:
   - Floating yellow chat bubble in bottom-right corner
-  - Real-time responses from PandasAI analyzing DynamoDB project data
-  - Chart/image display support (base64 images)
+  - AI responses powered by N8N with updated vector store
   - Custom branding with Takeo colors (black header, yellow user messages, white bot messages)
-  - Welcome message: "Hi! I'm DataChimp, your AI assistant. Ask me anything about Takeo's project data!"
+  - Welcome message: "Hi! I'm your Takeo AI assistant. Ask me anything about our projects, team, or vision!"
 - **Styling**: Matches site brand with black (#000000) header, yellow (#E9E44C) user messages, white bot responses
-- **Implementation**: Custom React component (`ChatWidget.tsx`) with API integration
-- **Data Source**: Queries Work_Log_III DynamoDB table via PandasAI + GPT-4.1-mini
-- **Request Format**: `POST /chat { "query": "..." }`
-- **Response Format**: `{ "ok": true, "response": "...", "image_base64": "..." }`
+- **Implementation**: Custom React component (`ChatWidget.tsx`) with N8N webhook integration
+- **Request Format**: `POST /webhook/chatbotv { "action": "sendMessage", "sessionId": "...", "chatInput": "..." }`
+- **Response Format**: `{ "output": "response text" }`
 
-**Heroku CORS Configuration:**
-- CORS origins configured: `takeo.dev`, `*.replit.dev`
-- Allows browser requests from production and development domains
+**Previous Implementation (November 2, 2025):**
+- Heroku DataChimp with PandasAI analyzing 23,831 DynamoDB rows
+- Switched back to N8N after vector store update
 
 ### Full-Screen Slide Deck Viewer
 - Route: `/whiteboard/slidedeck`

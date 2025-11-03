@@ -28,7 +28,7 @@ export default function ChatWidget() {
     if (isOpen && messages.length === 0) {
       setMessages([{
         role: 'bot',
-        text: "Hi! I'm DataChimp, your AI assistant. Ask me anything about Takeo's project data!",
+        text: "Hi! I'm your Takeo AI assistant. Ask me anything about our projects, team, or vision!",
         timestamp: new Date()
       }]);
     }
@@ -44,32 +44,37 @@ export default function ChatWidget() {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const userInput = input;
     setInput('');
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://takeo-datachimp-fa61a1231fc1.herokuapp.com/chat', {
+      const response = await fetch('https://takeoffmonkey.app.n8n.cloud/webhook/chatbotv', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ query: input }),
+        body: JSON.stringify({
+          action: 'sendMessage',
+          sessionId: `session-${Date.now()}`,
+          chatInput: userInput
+        }),
       });
 
       const data = await response.json();
 
-      if (data.ok) {
+      // N8N returns: { output: "response text" }
+      if (data.output) {
         const botMessage: Message = {
           role: 'bot',
-          text: data.response || 'I received your question but have no response.',
-          image: data.image_base64 ? `data:image/png;base64,${data.image_base64}` : undefined,
+          text: data.output,
           timestamp: new Date()
         };
         setMessages(prev => [...prev, botMessage]);
       } else {
         setMessages(prev => [...prev, {
           role: 'bot',
-          text: `Error: ${data.error || 'Something went wrong'}`,
+          text: 'I received your question but have no response.',
           timestamp: new Date()
         }]);
       }
@@ -109,8 +114,8 @@ export default function ChatWidget() {
         <div className="fixed bottom-6 right-6 w-[400px] h-[600px] bg-white rounded-lg shadow-2xl flex flex-col z-50">
           <div className="bg-black text-white px-6 py-4 rounded-t-lg flex justify-between items-center">
             <div>
-              <h3 className="font-bold text-lg">DataChimp Assistant</h3>
-              <p className="text-sm text-gray-300">Ask about project data</p>
+              <h3 className="font-bold text-lg">Takeo AI Assistant</h3>
+              <p className="text-sm text-gray-300">Ask about Takeo</p>
             </div>
             <button
               onClick={() => setIsOpen(false)}
