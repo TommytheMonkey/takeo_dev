@@ -64,7 +64,7 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 ### AI Chatbot (November 3, 2025)
 - **Platform**: N8N chatbot with vector store integration
 - **Location**: Whiteboard page only (behind password protection)
-- **API Endpoint**: https://takeoffmonkey.app.n8n.cloud/webhook/chatbotv
+- **API Endpoint**: https://takeoffmonkey.app.n8n.cloud/webhook/4d7ed474-a253-4834-ac42-b57f1b424f63
 - **Features**:
   - Floating yellow chat bubble in bottom-right corner
   - AI responses powered by N8N with updated vector store

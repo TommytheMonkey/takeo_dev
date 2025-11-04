@@ -49,7 +49,7 @@ export default function ChatWidget() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://takeoffmonkey.app.n8n.cloud/webhook/chatbotv', {
+      const response = await fetch('https://takeoffmonkey.app.n8n.cloud/webhook/4d7ed474-a253-4834-ac42-b57f1b424f63', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
