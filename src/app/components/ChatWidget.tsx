@@ -61,7 +61,19 @@ export default function ChatWidget() {
         }),
       });
 
-      const data = await response.json();
+      const text = await response.text();
+      
+      // Try to parse JSON, handle empty responses
+      if (!text || text.trim() === '') {
+        setMessages(prev => [...prev, {
+          role: 'bot',
+          text: 'The AI responded, but the N8N workflow needs a "Respond to Webhook" node configured to return data.',
+          timestamp: new Date()
+        }]);
+        return;
+      }
+
+      const data = JSON.parse(text);
 
       // N8N returns: { output: "response text" }
       if (data.output) {
