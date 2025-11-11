@@ -19,21 +19,55 @@ export async function POST(request: NextRequest) {
     // Get Google Sheets client
     const sheets = await getUncachableGoogleSheetClient();
 
-    // Check if visitor already exists (idempotency)
+    // Check if Visitor_Access sheet exists, create if not
+    let sheetExists = false;
     try {
       const existing = await sheets.spreadsheets.values.get({
         spreadsheetId: SPREADSHEET_ID,
         range: 'Visitor_Access!A:A',
       });
-
+      
+      sheetExists = true;
+      
+      // Check for duplicate visitor IDs (idempotency)
       const existingIds = existing.data.values?.slice(1).map(row => row[0]) || [];
       if (existingIds.includes(visitorId)) {
         console.log('Visitor already logged:', visitorId);
         return NextResponse.json({ success: true, duplicate: true }, { status: 200 });
       }
     } catch (error) {
-      // Sheet might not exist yet, continue to create
-      console.log('Visitor_Access sheet not found, will create on first write');
+      console.log('Visitor_Access sheet not found, creating it now');
+      
+      // Create the Visitor_Access sheet tab
+      try {
+        await sheets.spreadsheets.batchUpdate({
+          spreadsheetId: SPREADSHEET_ID,
+          requestBody: {
+            requests: [{
+              addSheet: {
+                properties: {
+                  title: 'Visitor_Access'
+                }
+              }
+            }]
+          }
+        });
+        
+        // Add header row
+        await sheets.spreadsheets.values.update({
+          spreadsheetId: SPREADSHEET_ID,
+          range: 'Visitor_Access!A1:E1',
+          valueInputOption: 'USER_ENTERED',
+          requestBody: {
+            values: [['Visitor ID', 'Name', 'Email', 'Timestamp', 'User Agent']],
+          },
+        });
+        
+        console.log('Visitor_Access sheet created with headers');
+      } catch (createError) {
+        console.error('Error creating Visitor_Access sheet:', createError);
+        throw createError;
+      }
     }
 
     // Format date for Google Sheets
