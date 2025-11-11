@@ -25,13 +25,12 @@ export function useVisitorSession() {
     setIsLoading(false);
   }, []);
 
-  const saveSession = (name: string, email: string) => {
-    const visitorId = crypto.randomUUID();
+  const saveSession = (name: string, email: string, visitorId?: string, firstVisited?: string) => {
     const newSession: VisitorSession = {
-      visitorId,
+      visitorId: visitorId || crypto.randomUUID(),
       name,
       email,
-      firstVisited: new Date().toISOString(),
+      firstVisited: firstVisited || new Date().toISOString(),
     };
     localStorage.setItem('takeo_visitor', JSON.stringify(newSession));
     setSession(newSession);

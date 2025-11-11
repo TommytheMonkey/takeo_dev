@@ -33,12 +33,19 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 - Clean, minimal design
 - Fully responsive layout
 
-### Password Protection
-- Client-side password gate for accessing the whiteboard
-- Simple modal interface for password entry
-- Redirects to `/whiteboard` on correct password (password: "100M")
-- "Access Denied" alert on incorrect password
-- **Note**: This is a UX-level gate; users can bypass by navigating directly to /whiteboard. For true access control, implement server-side middleware.
+### Visitor Tracking & Access Control (November 11, 2025)
+- **Smart Access Modal** with device recognition:
+  - **New Visitors**: Form asks for Name, Email, and Password (must be "100M")
+  - **Returning Visitors**: Only asks for password (recognizes device via localStorage)
+- **Automatic Logging**: Visitor data (name, email, visitorId, timestamp, userAgent) automatically logged to Google Sheets
+- **Google Sheets Integration**: Visitor data appended to "Visitor_Access" tab in spreadsheet ID: 1b0K-HtBPX6vBJsWx5xdrRIPElRROIrt15UnFL8Zh7R4
+- **Idempotency**: Duplicate visitor IDs are prevented from being logged multiple times
+- **Device Recognition**: Uses localStorage to store visitor session (visitorId, name, email, firstVisited)
+- **Implementation**: 
+  - `useVisitorSession` hook for device recognition
+  - `AccessModal` component with conditional forms
+  - `/api/log-visit` API route with Google Sheets append
+- **Note**: This is a UX-level gate with client-side password check; users can bypass by navigating directly to /whiteboard. For true access control, implement server-side middleware.
 
 ### Whiteboard Area
 - Main route at `/whiteboard` with complete presentation layout

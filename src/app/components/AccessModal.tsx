@@ -41,22 +41,36 @@ export default function AccessModal() {
           return;
         }
 
-        const sessionData = saveSession(name, email);
+        // Generate visitor ID first, but don't save to localStorage yet
+        const visitorId = crypto.randomUUID();
+        const timestamp = new Date().toISOString();
 
         // Log visitor access to Google Sheets
-        await fetch('/api/log-visit', {
+        const logResponse = await fetch('/api/log-visit', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            visitorId: sessionData.visitorId,
+            visitorId,
             name,
             email,
             userAgent: navigator.userAgent,
-            timestamp: new Date().toISOString(),
+            timestamp,
           }),
         });
+
+        // Verify logging succeeded before saving session or allowing access
+        if (!logResponse.ok) {
+          setError('Failed to log your access. Please try again or contact support.');
+          setIsSubmitting(false);
+          console.error('Failed to log visitor:', await logResponse.text());
+          return;
+        }
+
+        // Only save to localStorage after successful logging
+        // Use the same visitorId and timestamp that was logged
+        saveSession(name, email, visitorId, timestamp);
       }
 
       // Redirect to whiteboard
