@@ -28,7 +28,7 @@ export default function ChatWidget() {
     if (isOpen && messages.length === 0) {
       setMessages([{
         role: 'bot',
-        text: "Hi! I'm your Takeo AI assistant. Ask me anything about our projects, team, or vision!",
+        text: "Hi there, I'm the *actual* monkey of Takeoff Monkey. I can answer basic questions from our monthly P&Ls and monthly summary reports.",
         timestamp: new Date()
       }]);
     }
@@ -49,7 +49,7 @@ export default function ChatWidget() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://takeoffmonkey.app.n8n.cloud/webhook/4d7ed474-a253-4834-ac42-b57f1b424f63', {
+      const response = await fetch('https://takeoffmonkey.app.n8n.cloud/webhook/26146015-f148-46cf-badf-4bc530857bdb/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,19 +61,7 @@ export default function ChatWidget() {
         }),
       });
 
-      const text = await response.text();
-      
-      // Try to parse JSON, handle empty responses
-      if (!text || text.trim() === '') {
-        setMessages(prev => [...prev, {
-          role: 'bot',
-          text: 'The AI responded, but the N8N workflow needs a "Respond to Webhook" node configured to return data.',
-          timestamp: new Date()
-        }]);
-        return;
-      }
-
-      const data = JSON.parse(text);
+      const data = await response.json();
 
       // N8N returns: { output: "response text" }
       if (data.output) {

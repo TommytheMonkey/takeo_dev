@@ -61,15 +61,15 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
   - `Slideshow.tsx` - Auto-cycling slideshow with 4 demo screenshots (10 seconds per image), manual navigation controls
   - `EmailCapture.tsx` - Name, company name, and email form with Google Sheets integration
 
-### AI Chatbot (November 3, 2025)
-- **Platform**: N8N chatbot with vector store integration
+### AI Chatbot (November 11, 2025)
+- **Platform**: N8N Chat widget with AI financial analyst
 - **Location**: Whiteboard page only (behind password protection)
-- **API Endpoint**: https://takeoffmonkey.app.n8n.cloud/webhook/4d7ed474-a253-4834-ac42-b57f1b424f63
+- **API Endpoint**: https://takeoffmonkey.app.n8n.cloud/webhook/26146015-f148-46cf-badf-4bc530857bdb/chat
 - **Features**:
   - Floating yellow chat bubble in bottom-right corner
   - AI responses powered by N8N with updated vector store
   - Custom branding with Takeo colors (black header, yellow user messages, white bot messages)
-  - Welcome message: "Hi! I'm your Takeo AI assistant. Ask me anything about our projects, team, or vision!"
+  - Welcome message: "Hi there, I'm the *actual* monkey of Takeoff Monkey. I can answer basic questions from our monthly P&Ls and monthly summary reports."
 - **Styling**: Matches site brand with black (#000000) header, yellow (#E9E44C) user messages, white bot responses
 - **Implementation**: Custom React component (`ChatWidget.tsx`) with N8N webhook integration
 - **Request Format**: `POST /webhook/chatbotv { "action": "sendMessage", "sessionId": "...", "chatInput": "..." }`
