@@ -62,7 +62,7 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
   - "Our Story" - `/whiteboard/story` - Full story page with Tommy's bio and company history
   - "Whitepaper" - `/Takeo_Whitepaper_2025_v2.pdf` - Takeo whitepaper PDF (opens in new tab)
   - "Demo" - `https://bid-manager-2-logan14.replit.app/` - External demo link
-  - "Widgets" - `/whiteboard/widgets` - Widgets (placeholder)
+  - "Widgets" - `/whiteboard/widgets` - Widget gallery with Scope Extractor tool
   - `/whiteboard/slidedeck` - Full-screen slide deck viewer (13 slides) - accessible via direct URL
 - Components:
   - `Slideshow.tsx` - Auto-cycling slideshow with 4 demo screenshots (10 seconds per image), manual navigation controls
@@ -85,6 +85,18 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 **Previous Implementation (November 2, 2025):**
 - Heroku DataChimp with PandasAI analyzing 23,831 DynamoDB rows
 - Switched back to N8N after vector store update
+
+### Widgets Page (November 20, 2025)
+- Route: `/whiteboard/widgets`
+- Features:
+  - **Scope Extractor**: Link to external tool at https://scope-extractor-tommy199.replit.app
+  - Yellow (#E9E44C) document icon matching brand colors
+  - Card-based grid layout ready for additional widgets
+  - Hover effects with border and text color changes
+  - Opens in new tab with proper security attributes
+  - Back to Whiteboard navigation link
+- Design: Black background with white text, consistent with site branding
+- Purpose: Central hub for construction tools and utilities
 
 ### Full-Screen Slide Deck Viewer
 - Route: `/whiteboard/slidedeck`
