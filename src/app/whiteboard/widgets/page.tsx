@@ -69,6 +69,51 @@ export default function WidgetsPage() {
             </div>
           </a>
 
+          {/* Worksheet Comparison Tool Widget */}
+          <a 
+            href="https://worksheet-comparison-tommy199.replit.app" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-[#E9E44C] hover:bg-gray-800 transition-all duration-200 group"
+          >
+            <div className="flex flex-col items-center text-center">
+              {/* Icon */}
+              <div className="w-16 h-16 mb-4 flex items-center justify-center bg-[#E9E44C] rounded-lg group-hover:scale-110 transition-transform duration-200">
+                <svg 
+                  className="w-8 h-8 text-black" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" 
+                  />
+                </svg>
+              </div>
+              
+              {/* Title */}
+              <h3 className="text-xl font-bold mb-2 group-hover:text-[#E9E44C] transition-colors">
+                Worksheet Comparison Tool
+              </h3>
+              
+              {/* Description */}
+              <p className="text-gray-400 text-sm">
+                Compare and analyze worksheets side by side
+              </p>
+              
+              {/* External link indicator */}
+              <div className="mt-4 text-xs text-gray-300 flex items-center gap-1">
+                <span>Open tool</span>
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </div>
+            </div>
+          </a>
+
           {/* Placeholder for future widgets */}
           <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
             <div className="flex flex-col items-center text-center">

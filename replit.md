@@ -90,7 +90,8 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 - Route: `/whiteboard/widgets`
 - Features:
   - **Scope Extractor**: Link to external tool at https://scope-extractor-tommy199.replit.app
-  - Yellow (#E9E44C) document icon matching brand colors
+  - **Worksheet Comparison Tool**: Link to external tool at https://worksheet-comparison-tommy199.replit.app
+  - Yellow (#E9E44C) icons matching brand colors (document icon for Scope Extractor, columns icon for Worksheet Comparison)
   - Card-based grid layout ready for additional widgets
   - Hover effects with border and text color changes
   - Opens in new tab with proper security attributes
