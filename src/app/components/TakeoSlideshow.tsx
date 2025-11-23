@@ -2,162 +2,233 @@
 
 import { useState, useEffect } from 'react';
 
-const slides = [
-  {
-    eyebrow: '⚡ Drawing Indexer',
-    headline: 'Index 100+ Sheets in Minutes, Not Days',
-    subheadline: 'Stop wasting hours on manual takeoffs. Let AI do the heavy lifting.',
-    description: 'Upload construction drawings and automatically generate detailed indexes with scope summaries, density analysis, and estimated takeoff times. What used to take a full day now takes 3 minutes.',
-    cta: 'Try It Now',
-    image: '/demo/demo-1.png'
-  },
-  {
-    eyebrow: '🎯 Catalog Sync',
-    headline: 'Match 10,000 Items Instantly with AI',
-    subheadline: 'Never manually match materials again. Intelligence that learns your products.',
-    description: 'Upload your product catalog and material lists. Our AI instantly matches items with unprecedented accuracy, learning your preferences and catching discrepancies you\'d miss manually.',
-    cta: 'See It In Action',
-    image: '/demo/demo-2.png'
-  },
-  {
-    eyebrow: '🚀 Jobs Master',
-    headline: '30,000+ Jobs. One Intelligent System.',
-    subheadline: 'Your entire job history at your fingertips. AI that actually understands your business.',
-    description: 'Track every project from bid to completion. Search through years of work history instantly. Get AI-powered insights that help you bid smarter and win more profitable work.',
-    cta: 'Explore Features',
-    image: '/demo/demo-3.png'
-  }
-];
-
 export default function TakeoSlideshow() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
+  const slides = [
+    {
+      eyebrow: '🚀 Takeo OS',
+      headline: '$2.3M ARR. Profitable. Trusted by Industry Leaders.',
+      subheadline: 'The first complete operating system built for subcontractors—by people who have lived it.',
+      description: "We are not just another software company. We are construction veterans with top-tier tech expertise, 91.98% customer retention, and access to 300k+ subcontractors through distribution partners. We have earned the trust of the industry—and we are just getting started.",
+      ctaText: 'See The Platform',
+      ctaLink: '/whiteboard/widgets',
+      backgroundImage: '/slideshow/slide1.png'
+    },
+    {
+      eyebrow: '💡 Complete System',
+      headline: 'One Platform. Every Tool. Zero Switching.',
+      subheadline: 'Estimating, sales, admin—streamlined into a single, intelligent system.',
+      description: "While competitors offer scattered point solutions, we have built the operating system. AI-powered drawing indexing, catalog sync, job management with Claude AI assistant, seamless integrations—all working together. This is not software. It is infrastructure for an entire industry.",
+      ctaText: 'Explore Features',
+      ctaLink: '/whiteboard/widgets',
+      backgroundImage: '/slideshow/slide2.png'
+    },
+    {
+      eyebrow: '⚡ Unstoppable Advantage',
+      headline: 'We Know Subcontractors. Because We Are Subcontractors.',
+      subheadline: 'Deep industry expertise meets world-class engineering. That combination is unbeatable.',
+      description: "80% of our leads come from referrals. ERW, BrightView, Ruppert, Nova, Oberson's—they trust us because we understand their pain. We talk to customers daily. We have built takeoffs for thousands of projects. Now we are scaling that knowledge into the platform that will define pre-construction for the next decade.",
+      ctaText: 'Our Story',
+      ctaLink: '/whiteboard/story',
+      backgroundImage: '/slideshow/slide3.png'
+    }
+  ];
+
+  // Auto-play functionality
   useEffect(() => {
     if (isPaused) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % slides.length);
-    }, 7000); // 7 seconds per slide
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 7000);
 
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, slides.length]);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % slides.length);
+  const changeSlide = (direction: number) => {
+    const newIndex = currentSlide + direction;
+    if (newIndex >= slides.length) {
+      setCurrentSlide(0);
+    } else if (newIndex < 0) {
+      setCurrentSlide(slides.length - 1);
+    } else {
+      setCurrentSlide(newIndex);
+    }
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
   };
 
-  const currentSlide = slides[currentIndex];
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        changeSlide(-1);
+      } else if (e.key === 'ArrowRight') {
+        changeSlide(1);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [currentSlide]);
 
   return (
-    <div 
-      className="relative w-full rounded-2xl overflow-hidden shadow-2xl min-h-[600px]"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      {/* Slide Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
-        {currentSlide.image && (
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-30"
-            style={{
-              backgroundImage: `url(${currentSlide.image})`,
-              animation: 'kenBurns 8s ease-in-out forwards'
-            }}
-          />
-        )}
-      </div>
-
-      {/* Dark Overlay for Text Readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-black/40" />
-
-      {/* Content */}
-      <div className="relative z-10 p-8 md:p-12 max-w-3xl h-full min-h-[600px] flex flex-col justify-center">
-        {/* Eyebrow */}
-        <div 
-          className="inline-flex items-center gap-2 bg-[#E9E44C]/15 text-[#E9E44C] px-4 py-2 rounded-full text-sm font-bold mb-6 border border-[#E9E44C]/40 w-fit uppercase tracking-wide"
-          style={{ animation: 'slideInLeft 0.6s ease-out 0.2s backwards' }}
-        >
-          {currentSlide.eyebrow}
-        </div>
-
-        {/* Headline */}
-        <h2 
-          className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 bg-gradient-to-br from-white to-[#E9E44C] bg-clip-text text-transparent"
-          style={{ animation: 'slideInLeft 0.6s ease-out 0.4s backwards' }}
-        >
-          {currentSlide.headline}
-        </h2>
-
-        {/* Subheadline */}
-        <p 
-          className="text-xl md:text-2xl font-semibold text-slate-300 mb-6 leading-snug"
-          style={{ animation: 'slideInLeft 0.6s ease-out 0.6s backwards' }}
-        >
-          {currentSlide.subheadline}
-        </p>
-
-        {/* Description */}
-        <p 
-          className="text-lg text-slate-400 mb-10 leading-relaxed"
-          style={{ animation: 'slideInLeft 0.6s ease-out 0.8s backwards' }}
-        >
-          {currentSlide.description}
-        </p>
-
-        {/* CTA Button */}
-        <a
-          href="/whiteboard/widgets"
-          className="inline-flex items-center gap-3 bg-[#E9E44C] text-black px-8 py-4 rounded-xl font-bold text-lg w-fit hover:bg-white hover:translate-y-[-3px] hover:translate-x-[5px] hover:shadow-[0_8px_30px_rgba(245,237,96,0.5)] transition-all duration-300"
-          style={{ animation: 'slideInLeft 0.6s ease-out 1s backwards' }}
-        >
-          {currentSlide.cta}
-          <span className="text-xl transition-transform duration-300 hover:translate-x-1">→</span>
-        </a>
-      </div>
-
-      {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-5 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-md border-2 border-white/30 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-[#E9E44C]/20 hover:border-[#E9E44C] hover:scale-110 transition-all duration-300"
-        aria-label="Previous slide"
+    <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8">
+      <div
+        className="relative w-full bg-black rounded-[20px] overflow-hidden border border-[#F5ED60]/10"
+        style={{ boxShadow: '0 20px 60px rgba(245, 237, 96, 0.2)' }}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
-        ←
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-5 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-md border-2 border-white/30 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-[#E9E44C]/20 hover:border-[#E9E44C] hover:scale-110 transition-all duration-300"
-        aria-label="Next slide"
-      >
-        →
-      </button>
-
-      {/* Dots Navigation */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-        {slides.map((_, index) => (
-          <button
+        {slides.map((slide, index) => (
+          <div
             key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`h-3 rounded-full transition-all duration-300 border-2 ${
-              index === currentIndex
-                ? 'w-10 bg-[#E9E44C] border-[#E9E44C]/30'
-                : 'w-3 bg-white/30 border-transparent hover:bg-white/50'
+            className={`relative w-full min-h-[600px] ${
+              index === currentSlide ? 'block' : 'hidden'
             }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
+            style={{ animation: index === currentSlide ? 'fadeIn 1s ease-in-out' : 'none' }}
+          >
+            {/* Background Image */}
+            <div className="absolute top-0 left-0 w-full h-full z-[1]">
+              <div
+                className="w-full h-full bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${slide.backgroundImage})`,
+                  animation: index === currentSlide ? 'kenBurns 8s ease-in-out forwards' : 'none'
+                }}
+              />
+            </div>
+
+            {/* Dark Overlay */}
+            <div
+              className="absolute top-0 left-0 w-full h-full z-[2]"
+              style={{
+                background: 'linear-gradient(to right, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0.4) 70%, rgba(0, 0, 0, 0.3) 100%)'
+              }}
+            />
+
+            {/* Content */}
+            <div className="relative z-[3] px-6 md:px-12 py-16 md:py-20 max-w-[750px] flex flex-col justify-center min-h-[600px]">
+              {/* Eyebrow */}
+              <div
+                className="inline-flex items-center gap-2 bg-[#F5ED60]/15 text-[#F5ED60] px-4 py-2 rounded-[20px] text-[0.85rem] font-bold mb-6 border border-[#F5ED60]/40 w-fit uppercase tracking-wider"
+                style={{
+                  animation: index === currentSlide ? 'slideInLeft 0.6s ease-out 0.2s backwards' : 'none'
+                }}
+              >
+                {slide.eyebrow}
+              </div>
+
+              {/* Headline */}
+              <h2
+                className="text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.1] mb-6"
+                style={{
+                  background: 'linear-gradient(135deg, #ffffff 0%, #F5ED60 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  animation: index === currentSlide ? 'slideInLeft 0.6s ease-out 0.4s backwards' : 'none'
+                }}
+              >
+                {slide.headline}
+              </h2>
+
+              {/* Subheadline */}
+              <p
+                className="text-xl md:text-2xl font-semibold text-[#cbd5e1] mb-6 leading-[1.4]"
+                style={{
+                  animation: index === currentSlide ? 'slideInLeft 0.6s ease-out 0.6s backwards' : 'none'
+                }}
+              >
+                {slide.subheadline}
+              </p>
+
+              {/* Description */}
+              <p
+                className="text-base md:text-lg leading-[1.7] text-[#94a3b8] mb-10"
+                style={{
+                  animation: index === currentSlide ? 'slideInLeft 0.6s ease-out 0.8s backwards' : 'none'
+                }}
+              >
+                {slide.description}
+              </p>
+
+              {/* CTA Button */}
+              <a
+                href={slide.ctaLink}
+                className="inline-flex items-center gap-3 bg-[#F5ED60] text-black px-8 py-4 rounded-[10px] font-bold text-base w-fit transition-all hover:bg-white"
+                style={{
+                  boxShadow: '0 4px 20px rgba(245, 237, 96, 0.3)',
+                  animation: index === currentSlide ? 'slideInLeft 0.6s ease-out 1s backwards' : 'none'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-3px) translateX(5px)';
+                  e.currentTarget.style.boxShadow = '0 8px 30px rgba(245, 237, 96, 0.5)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'none';
+                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(245, 237, 96, 0.3)';
+                }}
+              >
+                {slide.ctaText}
+                <span className="text-xl transition-transform hover:translate-x-1">→</span>
+              </a>
+            </div>
+
+            {/* Progress Bar */}
+            {index === currentSlide && !isPaused && (
+              <div
+                className="absolute bottom-0 left-0 h-1 bg-[#F5ED60] z-[5]"
+                style={{ animation: 'progress 7s linear forwards' }}
+              />
+            )}
+          </div>
         ))}
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={() => changeSlide(-1)}
+          className="absolute top-1/2 left-5 -translate-y-1/2 z-[4] bg-white/10 border-2 border-white/30 text-white text-2xl w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-all hover:bg-[#F5ED60]/20 hover:border-[#F5ED60] hover:scale-110 backdrop-blur-[10px]"
+          aria-label="Previous slide"
+        >
+          ‹
+        </button>
+        <button
+          onClick={() => changeSlide(1)}
+          className="absolute top-1/2 right-5 -translate-y-1/2 z-[4] bg-white/10 border-2 border-white/30 text-white text-2xl w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-all hover:bg-[#F5ED60]/20 hover:border-[#F5ED60] hover:scale-110 backdrop-blur-[10px]"
+          aria-label="Next slide"
+        >
+          ›
+        </button>
+
+        {/* Dots Navigation */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[4] flex gap-3">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`h-3 rounded-full transition-all cursor-pointer border-2 ${
+                index === currentSlide
+                  ? 'w-10 bg-[#F5ED60] border-[#F5ED60]/30'
+                  : 'w-3 bg-white/30 border-transparent hover:bg-white/50'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
 
-      {/* Progress Bar */}
-      {!isPaused && (
-        <div className="absolute bottom-0 left-0 h-1 bg-[#E9E44C] z-30 animate-progress" />
-      )}
-
+      {/* CSS Animations */}
       <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
         @keyframes slideInLeft {
           from {
             opacity: 0;
@@ -170,25 +241,13 @@ export default function TakeoSlideshow() {
         }
 
         @keyframes kenBurns {
-          from {
-            transform: scale(1);
-          }
-          to {
-            transform: scale(1.1);
-          }
+          from { transform: scale(1); }
+          to { transform: scale(1.1); }
         }
 
         @keyframes progress {
-          from {
-            width: 0%;
-          }
-          to {
-            width: 100%;
-          }
-        }
-
-        .animate-progress {
-          animation: progress 7s linear forwards;
+          from { width: 0%; }
+          to { width: 100%; }
         }
       `}</style>
     </div>
