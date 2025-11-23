@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Order Generator - Product Whitepaper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --banana: #F5ED60;
+            --jungle: #00391F;
+            --concrete: #F1F2F2;
+            --black: #231F20;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--concrete);
+            color: var(--black);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .whitepaper {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: var(--jungle);
+            color: var(--banana);
+            padding: 2rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            right: -50px;
+            top: -50px;
+            width: 200px;
+            height: 200px;
+            border: 40px solid var(--banana);
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--jungle);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icon {
+            font-size: 1.8rem;
+        }
+
+        .problem-box {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-box {
+            background: var(--banana);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .value-card {
+            background: var(--concrete);
+            padding: 1.25rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--jungle);
+        }
+
+        .value-card h4 {
+            color: var(--jungle);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .value-card p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .workflow {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .workflow-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--concrete);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .step-number {
+            background: var(--jungle);
+            color: var(--banana);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            flex-shrink: 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .step-text {
+            font-size: 0.95rem;
+        }
+
+        .tech-stack {
+            background: var(--jungle);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .tech-stack h4 {
+            color: var(--banana);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tech-tag {
+            background: rgba(245, 237, 96, 0.15);
+            color: var(--banana);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .highlight {
+            background: var(--banana);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            background: var(--concrete);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .market-section {
+            background: var(--banana);
+            padding: 2rem;
+            margin: 2rem -2.5rem 0;
+            text-align: center;
+        }
+
+        .market-section h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--jungle);
+            margin-bottom: 1rem;
+        }
+
+        .market-section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .stats-box {
+            background: var(--jungle);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .stats-box h4 {
+            color: var(--banana);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(245, 237, 96, 0.1);
+            border-radius: 6px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--banana);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-top: 0.25rem;
+        }
+
+        strong {
+            font-weight: 800;
+            color: var(--jungle);
+        }
+
+        @media (max-width: 640px) {
+            .header {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .market-section {
+                margin: 2rem -1.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="whitepaper">
+        <div class="header">
+            <div class="logo">🐵 TAKEOFF MONKEY</div>
+            <h1>Change Order Generator</h1>
+            <p class="subtitle">AI-Powered Change Order Documentation for Construction</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">⚠️</span>
+                    <span>The Problem</span>
+                </div>
+                <div class="problem-box">
+                    <p><strong>Construction drawings change constantly.</strong> As projects evolve through design iterations, quantities shift—more pipe here, fewer fixtures there. Contractors need to document these changes for change orders, but manually comparing old vs. new takeoffs is tedious, error-prone, and slows down approvals.</p>
+                    <p style="margin-top: 1rem;">Without a clear record of adds and deducts, change orders become contentious. General Contractors question the numbers, payment cycles drag on, and contractors lose money waiting for approvals on legitimate scope changes.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">✨</span>
+                    <span>The Solution</span>
+                </div>
+                <div class="solution-box">
+                    <p><strong>Change Order Generator uses AI to automatically compare material lists between drawing iterations.</strong> Upload your original bid quantities and the latest takeoff—the system intelligently matches every item and shows you exactly what changed.</p>
+                    <p style="margin-top: 1rem;">You get a clean, exportable report showing only the adds and deducts. No manual spreadsheet work. No questioning if you caught every change. Just clear documentation that General Contractors can approve immediately.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">💰</span>
+                    <span>Value Proposition</span>
+                </div>
+                <div class="value-grid">
+                    <div class="value-card">
+                        <h4>⚡ INSTANT COMPARISON</h4>
+                        <p>What used to take hours of spreadsheet work now happens in seconds</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>✅ BULLETPROOF DOCUMENTATION</h4>
+                        <p>AI-matched items eliminate disputes about what changed</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>💸 FASTER PAYMENT</h4>
+                        <p>Clear change orders mean faster GC approvals and shorter payment cycles</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>🎯 ZERO ERRORS</h4>
+                        <p>Catch every quantity change—never miss billable scope changes again</p>
+                    </div>
+                </div>
+
+                <div class="stats-box">
+                    <h4>📊 Impact Metrics</h4>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Time Saved</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Change Capture</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3-5x</div>
+                            <div class="stat-label">Faster Approvals</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🔄</span>
+                    <span>The Workflow</span>
+                </div>
+                <div class="workflow">
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-text">Upload your original contract/bid quantities (Excel format)</div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-text">Upload the latest takeoff from updated drawings</div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-text">AI matches items between lists, even with different wording</div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">4</div>
+                        <div class="step-text">Review color-coded results: Added, Removed, Increased, Decreased, Changed</div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">5</div>
+                        <div class="step-text">Export professional change order documentation to Excel</div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">6</div>
+                        <div class="step-text">Submit to GC for quick approval and faster payment</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🎯</span>
+                    <span>Key Features</span>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🧠</div>
+                        <div class="feature-text"><strong>Smart Matching</strong><br>AI understands "2\" PVC" = "2-inch PVC Pipe"</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎨</div>
+                        <div class="feature-text"><strong>Visual Status</strong><br>Color-coded badges for every change type</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-text"><strong>Summary Stats</strong><br>Total adds, deducts, and changes at a glance</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔍</div>
+                        <div class="feature-text"><strong>Filter & Sort</strong><br>Focus on specific changes quickly</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📤</div>
+                        <div class="feature-text"><strong>Excel Export</strong><br>Professional reports ready for GCs</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔄</div>
+                        <div class="feature-text"><strong>Replacement Detection</strong><br>Identifies when items are swapped</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🚀</span>
+                    <span>Why This Matters</span>
+                </div>
+                <p>Change orders are a critical part of construction cash flow. Every day of delay in approval is money tied up. Every missed scope change is profit lost. <span class="highlight">This tool transforms change order documentation from a bottleneck into a competitive advantage.</span></p>
+                <p style="margin-top: 1rem;">Contractors who can quickly, accurately document scope changes win more change order approvals, get paid faster, and build better relationships with GCs who appreciate clear, professional documentation.</p>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">⚙️</span>
+                    <span>Technology Foundation</span>
+                </div>
+                <p>Built on <strong>OpenAI's GPT-4o-mini</strong> for cost-effective, intelligent matching. The system uses a two-phase approach: word-based pre-filtering to identify candidates, then AI semantic analysis to determine exact relationships between items.</p>
+                <p style="margin-top: 1rem;">Smart performance optimization scales the matching strategy based on list size—comprehensive matching for small lists, efficient filtering for large ones—balancing accuracy with cost.</p>
+                
+                <div class="tech-stack">
+                    <h4>🛠 Tech Stack</h4>
+                    <div class="tech-list">
+                        <span class="tech-tag">React 19</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">GPT-4o-mini</span>
+                        <span class="tech-tag">pandas</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">shadcn/ui</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">💡</span>
+                    <span>Best Practices</span>
+                </div>
+                <div class="value-grid">
+                    <div class="value-card">
+                        <h4>📏 LIST SIZE</h4>
+                        <p>For critical comparisons, split large lists into batches of ≤50 items for comprehensive matching</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>📝 TERMINOLOGY</h4>
+                        <p>Use consistent naming across takeoffs to improve matching accuracy</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>✔️ REVIEW</h4>
+                        <p>Always manually review "Added" and "Removed" items for potential missed matches</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>📂 ORGANIZE</h4>
+                        <p>Sort lists by category before comparing to improve word overlap detection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="market-section">
+            <h3>🎯 Market Opportunity</h3>
+            <p>Every construction contractor dealing with design changes needs this tool. Change orders are inevitable, and <strong>fast, accurate documentation is the difference between smooth cash flow and payment delays.</strong> This transforms a painful manual process into a competitive advantage.</p>
+        </div>
+    </div>
+</body>
+</html>
