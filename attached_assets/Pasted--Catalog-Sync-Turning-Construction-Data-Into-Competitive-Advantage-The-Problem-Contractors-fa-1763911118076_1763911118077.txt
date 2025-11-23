@@ -1,0 +1,42 @@
+# Catalog Sync: Turning Construction Data Into Competitive Advantage
+
+## The Problem
+
+Contractors face a critical data problem: every project uses different names for the same materials. "4" PVC pipe," "4 inch PVC," "PVC 4in" - it's all the same product, but inconsistent naming makes it impossible to analyze spending patterns, track material usage over time, or bid accurately on new projects.
+
+Without clean, standardized data, contractors are flying blind. They can't answer simple questions like "What did we actually pay for PVC last year?" or "How much drainage pipe does a typical residential job require?" This leads to inaccurate bids, missed cost-saving opportunities, and leaving money on the table.
+
+## The Solution
+
+Catalog Sync uses AI to instantly match messy material lists to a standardized product catalog. Contractors simply upload their takeoff sheets and our Claude-powered system intelligently maps every item to the correct catalog entry - even when names don't match exactly.
+
+The result? Every project's materials are automatically standardized, creating a clean, analyzable dataset without any manual work.
+
+## The Value Proposition
+
+**For Contractors:**
+- **Bid with confidence**: Historical data becomes instantly usable for estimating future jobs
+- **Find cost savings**: Identify pricing trends and negotiate better with suppliers
+- **Win more work**: More accurate bids mean better margins without sacrificing competitiveness
+- **Zero friction**: AI does the standardization work - no manual data entry or cleanup required
+
+**The Workflow:**
+1. Upload your product catalog once (your standardized "source of truth")
+2. Upload project material lists as you receive them
+3. AI matches everything in seconds with confidence scores
+4. Review, adjust if needed, and export clean data
+5. Build a historical database that actually drives business decisions
+
+## Why Now
+
+Construction technology is ready for AI-powered automation. Contractors understand they need better data, but existing solutions require too much manual work to be practical. Claude AI's language understanding makes automatic standardization possible - and makes it so accurate that contractors will actually use it.
+
+## Technology Foundation
+
+Built on Anthropic's Claude AI with a modern web architecture designed for reliability and scale. The system handles batch processing with intelligent retry logic, maintains session state for workflow continuity, and provides real-time progress tracking during matching operations.
+
+The MVP uses in-memory storage for speed and simplicity, with a database-ready architecture that allows seamless scaling to persistent storage as usage grows.
+
+## Market Opportunity
+
+Every construction contractor with historical project data is a potential customer. The problem is universal, the solution is immediate, and the ROI is measurable: better bids win more profitable work.

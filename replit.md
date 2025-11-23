@@ -52,7 +52,7 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 - Features:
   - Large white Takeoff Monkey logo centered at top
   - "Takeo: pre-construction, unjammed" headline in white
-  - Five navigation links: See the deck, Our Story, Whitepaper, Demo, Widgets
+  - Four navigation links: See the deck, Our Story, Whitepaper, Demo
   - Showcase area with slideshow component (ready for demo screenshots)
   - "Get Updates" CTA with email capture modal (Google Sheets integration)
   - Footer with copyright and link to www.takeoffmonkey.com
@@ -61,8 +61,7 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
   - "See the deck" - `/TOM_Deck_2025_10_30.pdf` - Pitch deck PDF (opens in new tab)
   - "Our Story" - `/whiteboard/story` - Full story page with Tommy's bio and company history
   - "Whitepaper" - `/Takeo_Whitepaper_2025_v2.pdf` - Takeo whitepaper PDF (opens in new tab)
-  - "Demo" - `https://bid-manager-2-logan14.replit.app/` - External demo link
-  - "Widgets" - `/whiteboard/widgets` - Widget gallery with Scope Extractor tool
+  - "Demo" - `/whiteboard/widgets` - Demo page with four live tools
   - `/whiteboard/slidedeck` - Full-screen slide deck viewer (13 slides) - accessible via direct URL
 - Components:
   - `Slideshow.tsx` - Auto-cycling slideshow with 4 demo screenshots (10 seconds per image), manual navigation controls
@@ -86,19 +85,22 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 - Heroku DataChimp with PandasAI analyzing 23,831 DynamoDB rows
 - Switched back to N8N after vector store update
 
-### Widgets Page (November 20, 2025)
+### Demo Page (November 23, 2025)
 - Route: `/whiteboard/widgets`
+- Title: "Demo" (renamed from "Widgets")
 - Features:
   - **Scope Extractor**: Link to external tool at https://scope-extractor-tommy199.replit.app
   - **Worksheet Comparison Tool**: Link to external tool at https://worksheet-comparison-tommy199.replit.app
   - **Master Job Registry**: Link to external tool at https://takeo-job-registry-tommy199.replit.app
-  - Yellow (#E9E44C) icons matching brand colors (document icon for Scope Extractor, columns icon for Worksheet Comparison, clipboard icon for Master Job Registry)
-  - Card-based grid layout ready for additional widgets
+  - **Contractor Bid Box**: Link to external tool at https://bid-manager-2-logan14.replit.app/
+  - Yellow (#E9E44C) icons matching brand colors (document icon for Scope Extractor, columns icon for Worksheet Comparison, clipboard icon for Master Job Registry, document-with-corner icon for Contractor Bid Box)
+  - Card-based grid layout ready for additional demos
   - Hover effects with border and text color changes
   - Opens in new tab with proper security attributes
   - Back to Whiteboard navigation link
 - Design: Black background with white text, consistent with site branding
-- Purpose: Central hub for construction tools and utilities
+- Purpose: Central hub showcasing live demos and construction tools
+- Navigation Update: "Demo" and "Widgets" navigation items consolidated into single "Demo" link
 
 ### Full-Screen Slide Deck Viewer
 - Route: `/whiteboard/slidedeck`
@@ -129,7 +131,7 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 ### Whiteboard Section Implementation (October 22, 2025)
 1. **Complete Layout**: Full-featured presentation page with centered logo, headline, navigation, showcase, and footer
 2. **Clean Design**: Black background with large white Takeoff Monkey logo at top
-3. **Navigation System**: Five navigation links - See the deck (slidedeck), Our Story, Whitepaper (PDF - TOM_Deck_2025_10_30.pdf), Demo (external link), Widgets
+3. **Navigation System**: Four navigation links - See the deck, Our Story, Whitepaper, Demo (with four live tools)
 4. **Interactive Components**: Slideshow component with 4 cropped demo screenshots (1200x675px) cycling every 10 seconds, email capture modal with Google Sheets integration, and custom AI chatbot
 5. **Brand Styling**: High-contrast white text on black with yellow (#E9E44C) accent color on hover
 6. **Responsive Design**: Mobile-first layout that adapts to all screen sizes
