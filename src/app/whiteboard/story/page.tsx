@@ -73,12 +73,12 @@ export default function StoryPage() {
             </div>
             
             <div className="text-white text-base md:text-lg leading-relaxed space-y-6">
-              <div className="float-left mr-6 mb-6 w-64 md:w-80">
+              <div className="float-left mr-6 mb-6 w-32 md:w-40">
                 <Image
                   src="/tommy-lather.jpg"
                   alt="Tommy Lather"
-                  width={320}
-                  height={400}
+                  width={160}
+                  height={200}
                   className="rounded-lg w-full h-auto shadow-xl"
                 />
               </div>
@@ -92,8 +92,8 @@ export default function StoryPage() {
               <Image
                 src="/story/first_office.jpg"
                 alt="Tommy's first office"
-                width={800}
-                height={600}
+                width={400}
+                height={300}
                 className="rounded-lg w-full h-auto shadow-xl my-8"
               />
               <p className="text-center text-sm text-gray-400 italic -mt-4 mb-8">
@@ -111,8 +111,8 @@ export default function StoryPage() {
               <Image
                 src="/story/travel4.jpg"
                 alt="Tommy with Landscape Hub founder"
-                width={800}
-                height={600}
+                width={400}
+                height={300}
                 className="rounded-lg w-full h-auto shadow-xl my-8"
               />
               <p className="text-center text-sm text-gray-400 italic -mt-4 mb-8">
@@ -154,8 +154,8 @@ export default function StoryPage() {
               <Image
                 src="/story/coozies.jpg"
                 alt="Original Takeoff Monkey koozies"
-                width={800}
-                height={600}
+                width={400}
+                height={300}
                 className="rounded-lg w-full h-auto shadow-xl my-8"
               />
               <p className="text-center text-sm text-gray-400 italic -mt-4 mb-8">
@@ -169,8 +169,8 @@ export default function StoryPage() {
               <Image
                 src="/story/major_milestone1.jpg"
                 alt="First $100k month celebration"
-                width={800}
-                height={600}
+                width={400}
+                height={300}
                 className="rounded-lg w-full h-auto shadow-xl my-8"
               />
               <p className="text-center text-sm text-gray-400 italic -mt-4 mb-8">
@@ -202,8 +202,8 @@ export default function StoryPage() {
               <Image
                 src="/story/video4.jpg"
                 alt="Film crew after 16-hour shoot"
-                width={800}
-                height={600}
+                width={400}
+                height={300}
                 className="rounded-lg w-full h-auto shadow-xl my-8"
               />
               <p className="text-center text-sm text-gray-400 italic -mt-4 mb-8">
@@ -213,8 +213,8 @@ export default function StoryPage() {
               <Image
                 src="/story/video5.jpg"
                 alt="Another shot from filming"
-                width={800}
-                height={600}
+                width={400}
+                height={300}
                 className="rounded-lg w-full h-auto shadow-xl my-8"
               />
               <p className="text-center text-sm text-gray-400 italic -mt-4 mb-8">
