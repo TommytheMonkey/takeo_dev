@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope Extractor - Product Whitepaper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --banana: #F5ED60;
+            --jungle: #00391F;
+            --concrete: #F1F2F2;
+            --black: #231F20;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--concrete);
+            color: var(--black);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .whitepaper {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: var(--jungle);
+            color: var(--banana);
+            padding: 2rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            right: -50px;
+            top: -50px;
+            width: 200px;
+            height: 200px;
+            border: 40px solid var(--banana);
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--jungle);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icon {
+            font-size: 1.8rem;
+        }
+
+        .problem-box {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-box {
+            background: var(--banana);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .value-card {
+            background: var(--concrete);
+            padding: 1.25rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--jungle);
+        }
+
+        .value-card h4 {
+            color: var(--jungle);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .value-card p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .workflow {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .workflow-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--concrete);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .step-number {
+            background: var(--jungle);
+            color: var(--banana);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            flex-shrink: 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .step-text {
+            font-size: 0.95rem;
+        }
+
+        .tech-stack {
+            background: var(--jungle);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .tech-stack h4 {
+            color: var(--banana);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tech-tag {
+            background: rgba(245, 237, 96, 0.15);
+            color: var(--banana);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .highlight {
+            background: var(--banana);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            background: var(--concrete);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .market-section {
+            background: var(--banana);
+            padding: 2rem;
+            margin: 2rem -2.5rem 0;
+            text-align: center;
+        }
+
+        .market-section h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--jungle);
+            margin-bottom: 1rem;
+        }
+
+        .market-section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .stats-box {
+            background: var(--jungle);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .stats-box h4 {
+            color: var(--banana);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(245, 237, 96, 0.1);
+            border-radius: 6px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--banana);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-top: 0.25rem;
+        }
+
+        .scope-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .scope-badge {
+            background: var(--concrete);
+            color: var(--jungle);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 2px solid var(--jungle);
+        }
+
+        .callout-box {
+            background: linear-gradient(135deg, var(--jungle) 0%, #004d28 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--banana);
+        }
+
+        .callout-box strong {
+            color: var(--banana);
+        }
+
+        strong {
+            font-weight: 800;
+            color: var(--jungle);
+        }
+
+        @media (max-width: 640px) {
+            .header {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .market-section {
+                margin: 2rem -1.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="whitepaper">
+        <div class="header">
+            <div class="logo">🐵 TAKEOFF MONKEY</div>
+            <h1>Scope Extractor</h1>
+            <p class="subtitle">AI-Powered Construction Drawing Analysis & Scope Identification</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">⚠️</span>
+                    <span>The Problem</span>
+                </div>
+                <div class="problem-box">
+                    <p><strong>Time is a contractor's most valuable resource.</strong> Before spending hours on a detailed takeoff, contractors need to answer three critical questions: Does this project even have scope for us? How big and complex is it? Is it worth our time to bid?</p>
+                    <p style="margin-top: 1rem;">But answering these questions means manually flipping through hundreds of pages of slow-loading PDF construction drawings—civil plans, grading sheets, details, notes. Hours wasted just to discover there's no irrigation scope, or that the project is too small, or that the drawings are 80% structural with only 3 relevant landscape sheets.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">✨</span>
+                    <span>The Solution</span>
+                </div>
+                <div class="solution-box">
+                    <p><strong>Scope Extractor uses AI vision to instantly scan every page of construction drawings and create a complete index.</strong> Upload a PDF (or ZIP of PDFs), select the scopes you care about, and get back a detailed breakdown showing exactly which sheets contain measurable takeoff for your trade.</p>
+                    <p style="margin-top: 1rem;">In 30-60 seconds, you know if there's work to bid on, which sheets matter, and whether the project justifies a detailed estimate. No more wasting hours on drawings with no relevant scope.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">💰</span>
+                    <span>Value Proposition</span>
+                </div>
+                <div class="value-grid">
+                    <div class="value-card">
+                        <h4>⚡ INSTANT QUALIFICATION</h4>
+                        <p>Know in seconds if a project has your scope—no manual page flipping</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>⏱️ MASSIVE TIME SAVINGS</h4>
+                        <p>What took hours now takes minutes—spend time on real bids, not research</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>🎯 BETTER BID SELECTION</h4>
+                        <p>Only estimate projects worth your time—increase win rate by focusing on qualified opportunities</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>📊 COMPLEXITY ASSESSMENT</h4>
+                        <p>See density ratings and sheet counts to gauge project size before diving in</p>
+                    </div>
+                </div>
+
+                <div class="stats-box">
+                    <h4>📊 Time Impact</h4>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">3-5hrs</div>
+                            <div class="stat-label">Manual Review Time</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">~1min</div>
+                            <div class="stat-label">AI Processing Time</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%+</div>
+                            <div class="stat-label">Time Saved</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🔍</span>
+                    <span>What It Extracts</span>
+                </div>
+                <p>For every page in your construction drawing set, Scope Extractor identifies:</p>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">📄</div>
+                        <div class="feature-text"><strong>Sheet Number</strong><br>Full drawing number with prefixes</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📝</div>
+                        <div class="feature-text"><strong>Sheet Title</strong><br>Complete description of what's on the sheet</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📏</div>
+                        <div class="feature-text"><strong>Scale</strong><br>Drawing scales for accurate assessment</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📋</div>
+                        <div class="feature-text"><strong>Scope Summary</strong><br>Brief description of work shown</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-text"><strong>Density Rating</strong><br>Light, Medium, or Heavy takeoff complexity</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✅</div>
+                        <div class="feature-text"><strong>Scope Flags</strong><br>Checkmarks for each relevant trade</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🎯</span>
+                    <span>Trackable Scopes</span>
+                </div>
+                <p>Select which scopes matter to your business. The AI will flag every sheet containing measurable takeoff for each selected scope:</p>
+                <div class="scope-list">
+                    <span class="scope-badge">🌿 Softscape</span>
+                    <span class="scope-badge">💧 Irrigation</span>
+                    <span class="scope-badge">🚰 Drainage</span>
+                    <span class="scope-badge">💡 Lighting</span>
+                    <span class="scope-badge">🌊 BMP/Environmental</span>
+                    <span class="scope-badge">🚧 Fencing</span>
+                    <span class="scope-badge">🧱 Pavers</span>
+                    <span class="scope-badge">🏗️ Concrete Flatwork</span>
+                    <span class="scope-badge">🧱 Retaining Walls</span>
+                    <span class="scope-badge">⚽ Synthetic Turf</span>
+                    <span class="scope-badge">🪨 Aggregates/Gravel</span>
+                    <span class="scope-badge">🪑 Furnishings</span>
+                    <span class="scope-badge">➕ Custom Scopes</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🔄</span>
+                    <span>The Workflow</span>
+                </div>
+                <div class="workflow">
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-text">Upload construction drawing PDF (or ZIP file with multiple PDFs)</div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-text">Select the scopes relevant to your trade (irrigation, softscape, lighting, etc.)</div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-text">AI analyzes every page with vision model (~12 seconds per page)</div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">4</div>
+                        <div class="step-text">Review indexed results with checkmarks showing which sheets have your scope</div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">5</div>
+                        <div class="step-text">See summary stats: total sheets, density breakdown, scope totals</div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">6</div>
+                        <div class="step-text">Decide: Is this project worth a detailed estimate?</div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">7</div>
+                        <div class="step-text">Export to Excel/CSV for team reference or bid package organization</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🚀</span>
+                    <span>Why This Matters</span>
+                </div>
+                <div class="callout-box">
+                    <p><strong>The cost of bidding on the wrong projects is massive.</strong> Every hour spent on a detailed takeoff for a project with minimal scope—or no scope at all—is an hour not spent on winnable work.</p>
+                </div>
+                <p>Contractors who can quickly qualify opportunities spend their estimating time on projects they can actually win. <span class="highlight">Scope Extractor transforms bid qualification from a multi-hour research project into a 60-second decision.</span></p>
+                <p style="margin-top: 1rem;">This isn't just about saving time—it's about <strong>strategic focus</strong>. Bid on more qualified projects. Win more work. Stop wasting hours on drawings that were never a good fit.</p>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🎨</span>
+                    <span>Visual Results</span>
+                </div>
+                <p>Results are displayed in an easy-to-scan table format:</p>
+                <div class="value-grid">
+                    <div class="value-card">
+                        <h4>✅ CHECKMARKS</h4>
+                        <p>Visual indicators show which sheets contain each scope</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>🎨 COLOR CODING</h4>
+                        <p>Density ratings (Light, Medium, Heavy) for quick complexity assessment</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>🔍 SEARCH & FILTER</h4>
+                        <p>Find specific sheets or filter by density level</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>📊 SUMMARY TOTALS</h4>
+                        <p>See total sheet count per scope at a glance</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">⚙️</span>
+                    <span>Technology Foundation</span>
+                </div>
+                <p>Built on <strong>OpenAI's GPT-4o Vision</strong> model for intelligent analysis of construction drawings. The system processes PDFs at ~12 seconds per page with parallel processing, extracting structured data including sheet numbers, titles, scales, density ratings, and scope flags.</p>
+                <p style="margin-top: 1rem;">Optimized image processing reduces file sizes while maintaining drawing clarity. Retry logic with exponential backoff handles API rate limits. Results stream in real-time so you can start reviewing while processing continues.</p>
+                
+                <div class="tech-stack">
+                    <h4>🛠 Tech Stack</h4>
+                    <div class="tech-list">
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">GPT-4o Vision</span>
+                        <span class="tech-tag">PyMuPDF</span>
+                        <span class="tech-tag">Pillow</span>
+                        <span class="tech-tag">pandas</span>
+                        <span class="tech-tag">Gunicorn + Gevent</span>
+                        <span class="tech-tag">Server-Sent Events</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">📏</span>
+                    <span>Specifications</span>
+                </div>
+                <div class="value-grid">
+                    <div class="value-card">
+                        <h4>📦 FILE SUPPORT</h4>
+                        <p>PDF files, ZIP archives, multi-page documents up to 600MB</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>⚡ PROCESSING SPEED</h4>
+                        <p>~12 seconds per page with parallel processing (3 concurrent workers)</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>📤 EXPORT OPTIONS</h4>
+                        <p>CSV and Excel formats with complete scope columns</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>🔄 REAL-TIME PROGRESS</h4>
+                        <p>Live status updates showing current page being analyzed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="market-section">
+            <h3>🎯 Market Opportunity</h3>
+            <p>Every contractor who bids on projects needs to qualify opportunities before investing hours in takeoffs. <strong>The ability to quickly identify relevant scope is the difference between an efficient estimating department and one that wastes time on unwinnable work.</strong> This tool pays for itself with the first avoided bad bid.</p>
+        </div>
+    </div>
+</body>
+</html>
