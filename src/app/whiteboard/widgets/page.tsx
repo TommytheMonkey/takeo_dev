@@ -25,12 +25,7 @@ export default function WidgetsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {/* Scope Extractor Widget */}
-          <a 
-            href="https://scope-extractor-tommy199.replit.app" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-[#E9E44C] hover:bg-gray-800 transition-all duration-200 group"
-          >
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-[#E9E44C] hover:bg-gray-800 transition-all duration-200 group">
             <div className="flex flex-col items-center text-center">
               {/* Icon */}
               <div className="w-16 h-16 mb-4 flex items-center justify-center bg-[#E9E44C] rounded-lg group-hover:scale-110 transition-transform duration-200">
@@ -59,23 +54,34 @@ export default function WidgetsPage() {
                 Extract and analyze project scopes from documents
               </p>
               
-              {/* External link indicator */}
-              <div className="mt-4 text-xs text-gray-300 flex items-center gap-1">
-                <span>Open tool</span>
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
+              {/* Links */}
+              <div className="mt-4 text-xs text-gray-300 flex items-center gap-2">
+                <a 
+                  href="https://scope-extractor-tommy199.replit.app" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E9E44C] transition-colors flex items-center gap-1"
+                >
+                  <span>Open tool</span>
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                <span className="text-gray-600">|</span>
+                <a 
+                  href="/whitepapers/scope-extractor.html" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E9E44C] transition-colors"
+                >
+                  Whitepaper
+                </a>
               </div>
             </div>
-          </a>
+          </div>
 
           {/* Worksheet Comparison Tool Widget */}
-          <a 
-            href="https://worksheet-comparison-tommy199.replit.app" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-[#E9E44C] hover:bg-gray-800 transition-all duration-200 group"
-          >
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-[#E9E44C] hover:bg-gray-800 transition-all duration-200 group">
             <div className="flex flex-col items-center text-center">
               {/* Icon */}
               <div className="w-16 h-16 mb-4 flex items-center justify-center bg-[#E9E44C] rounded-lg group-hover:scale-110 transition-transform duration-200">
@@ -104,23 +110,34 @@ export default function WidgetsPage() {
                 Compare and analyze worksheets side by side
               </p>
               
-              {/* External link indicator */}
-              <div className="mt-4 text-xs text-gray-300 flex items-center gap-1">
-                <span>Open tool</span>
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
+              {/* Links */}
+              <div className="mt-4 text-xs text-gray-300 flex items-center gap-2">
+                <a 
+                  href="https://worksheet-comparison-tommy199.replit.app" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E9E44C] transition-colors flex items-center gap-1"
+                >
+                  <span>Open tool</span>
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                <span className="text-gray-600">|</span>
+                <a 
+                  href="/whitepapers/worksheet-comparison.html" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E9E44C] transition-colors"
+                >
+                  Whitepaper
+                </a>
               </div>
             </div>
-          </a>
+          </div>
 
           {/* Master Job Registry Widget */}
-          <a 
-            href="https://takeo-job-registry-tommy199.replit.app" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-[#E9E44C] hover:bg-gray-800 transition-all duration-200 group"
-          >
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-[#E9E44C] hover:bg-gray-800 transition-all duration-200 group">
             <div className="flex flex-col items-center text-center">
               {/* Icon */}
               <div className="w-16 h-16 mb-4 flex items-center justify-center bg-[#E9E44C] rounded-lg group-hover:scale-110 transition-transform duration-200">
@@ -149,23 +166,34 @@ export default function WidgetsPage() {
                 Centralized registry for all construction jobs
               </p>
               
-              {/* External link indicator */}
-              <div className="mt-4 text-xs text-gray-300 flex items-center gap-1">
-                <span>Open tool</span>
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
+              {/* Links */}
+              <div className="mt-4 text-xs text-gray-300 flex items-center gap-2">
+                <a 
+                  href="https://takeo-job-registry-tommy199.replit.app" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E9E44C] transition-colors flex items-center gap-1"
+                >
+                  <span>Open tool</span>
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                <span className="text-gray-600">|</span>
+                <a 
+                  href="/whitepapers/master-job-registry.html" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E9E44C] transition-colors"
+                >
+                  Whitepaper
+                </a>
               </div>
             </div>
-          </a>
+          </div>
 
           {/* Contractor Bid Box Widget */}
-          <a 
-            href="https://bid-manager-2-logan14.replit.app/" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-[#E9E44C] hover:bg-gray-800 transition-all duration-200 group"
-          >
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-[#E9E44C] hover:bg-gray-800 transition-all duration-200 group">
             <div className="flex flex-col items-center text-center">
               {/* Icon */}
               <div className="w-16 h-16 mb-4 flex items-center justify-center bg-[#E9E44C] rounded-lg group-hover:scale-110 transition-transform duration-200">
@@ -194,23 +222,34 @@ export default function WidgetsPage() {
                 Manage and track contractor bids efficiently
               </p>
               
-              {/* External link indicator */}
-              <div className="mt-4 text-xs text-gray-300 flex items-center gap-1">
-                <span>Open tool</span>
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
+              {/* Links */}
+              <div className="mt-4 text-xs text-gray-300 flex items-center gap-2">
+                <a 
+                  href="https://bid-manager-2-logan14.replit.app/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E9E44C] transition-colors flex items-center gap-1"
+                >
+                  <span>Open tool</span>
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                <span className="text-gray-600">|</span>
+                <a 
+                  href="/whitepapers/contractor-bid-box.html" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E9E44C] transition-colors"
+                >
+                  Whitepaper
+                </a>
               </div>
             </div>
-          </a>
+          </div>
 
           {/* Catalog Sync Widget */}
-          <a 
-            href="https://catalog-matcher-tommy199.replit.app" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-[#E9E44C] hover:bg-gray-800 transition-all duration-200 group"
-          >
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-[#E9E44C] hover:bg-gray-800 transition-all duration-200 group">
             <div className="flex flex-col items-center text-center">
               {/* Icon */}
               <div className="w-16 h-16 mb-4 flex items-center justify-center bg-[#E9E44C] rounded-lg group-hover:scale-110 transition-transform duration-200">
@@ -239,15 +278,31 @@ export default function WidgetsPage() {
                 Synchronize and match catalog items across systems
               </p>
               
-              {/* External link indicator */}
-              <div className="mt-4 text-xs text-gray-300 flex items-center gap-1">
-                <span>Open tool</span>
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
+              {/* Links */}
+              <div className="mt-4 text-xs text-gray-300 flex items-center gap-2">
+                <a 
+                  href="https://catalog-matcher-tommy199.replit.app" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E9E44C] transition-colors flex items-center gap-1"
+                >
+                  <span>Open tool</span>
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                <span className="text-gray-600">|</span>
+                <a 
+                  href="/whitepapers/catalog-sync.html" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E9E44C] transition-colors"
+                >
+                  Whitepaper
+                </a>
               </div>
             </div>
-          </a>
+          </div>
 
           {/* Placeholder for future widgets */}
           <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
