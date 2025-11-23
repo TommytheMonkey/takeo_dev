@@ -38,7 +38,7 @@ export default function TakeoSlideshow() {
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % slides.length);
-    }, 6000); // 6 seconds per slide
+    }, 7000); // 7 seconds per slide
 
     return () => clearInterval(interval);
   }, [isPaused]);
@@ -188,7 +188,7 @@ export default function TakeoSlideshow() {
         }
 
         .animate-progress {
-          animation: progress 6s linear forwards;
+          animation: progress 7s linear forwards;
         }
       `}</style>
     </div>
