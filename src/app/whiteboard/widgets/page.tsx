@@ -14,12 +14,49 @@ export default function WidgetsPage() {
   return (
     <div className="min-h-screen bg-black text-white py-16 px-4">
       <div className="max-w-6xl mx-auto">
+        {/* Hero Section */}
+        <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 border border-[#E9E44C]/20 rounded-2xl p-8 md:p-12 mb-12 overflow-hidden">
+          {/* Decorative gradient blob */}
+          <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#E9E44C]/10 rounded-full blur-3xl"></div>
+          
+          <div className="relative z-10">
+            {/* Eyebrow */}
+            <div className="inline-flex items-center gap-2 bg-[#E9E44C]/15 text-[#E9E44C] px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-[#E9E44C]/30">
+              🚀 Takeo OS
+            </div>
+            
+            {/* Title */}
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-4 bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent">
+              One Platform. Every Tool. Unified Intelligence.
+            </h1>
+            
+            {/* Description */}
+            <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-8 max-w-3xl">
+              These aren't just standalone applications—they're integrated components of Takeo OS, the complete operating system for specialty contractors. From opportunity to invoice, every tool shares data, learns from your company, and works together seamlessly.
+            </p>
+            
+            {/* Action Button */}
+            <div className="flex gap-4 flex-wrap">
+              <a 
+                href="/platform-overview.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#E9E44C] text-slate-900 px-7 py-3.5 rounded-lg font-semibold hover:bg-[#f4ea45] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(245,237,96,0.3)] transition-all duration-200"
+              >
+                Platform Overview
+                <span className="text-lg transition-transform duration-200 group-hover:translate-x-1">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Section Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Demo
-          </h1>
-          <p className="text-lg text-gray-400">
-            Live demos and tools for construction professionals
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-2">
+            Explore Individual Components
+          </h2>
+          <p className="text-lg text-slate-400">
+            Try each tool live and see how they work together
           </p>
         </div>
 
