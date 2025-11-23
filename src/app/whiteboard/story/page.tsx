@@ -165,6 +165,11 @@ export default function StoryPage() {
           margin-bottom: 0;
         }
         
+        .closing strong {
+          color: white;
+          font-weight: 800;
+        }
+        
         .closing-emphasis {
           margin-top: 1.5rem;
         }
