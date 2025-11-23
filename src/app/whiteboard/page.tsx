@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Slideshow from '../components/Slideshow';
+import TakeoSlideshow from '../components/TakeoSlideshow';
 import EmailCapture from '../components/EmailCapture';
 import ChatWidget from '../components/ChatWidget';
 
@@ -75,14 +75,7 @@ export default function WhiteboardPage() {
           </header>
 
           <section className="mb-12">
-            <div className="border-2 border-white/20 rounded-lg p-4 md:p-6">
-              <Slideshow images={[
-                '/demo/demo-1.png',
-                '/demo/demo-2.png',
-                '/demo/demo-3.png',
-                '/demo/demo-4.png'
-              ]} />
-            </div>
+            <TakeoSlideshow />
           </section>
 
           <div className="text-center mb-16">

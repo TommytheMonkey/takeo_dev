@@ -27,7 +27,7 @@ export default function WidgetsPage() {
             
             {/* Title */}
             <h1 className="text-3xl md:text-5xl font-extrabold mb-4 bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent">
-              One Platform. Every Tool. Unified Intelligence.
+              One Platform. Every Bid. Unified Intelligence.
             </h1>
             
             {/* Description */}
