@@ -58,12 +58,12 @@ export default function WhiteboardPage() {
                 Our Story
               </Link>
               <a 
-                href="/Takeo_Whitepaper_2025_v2.pdf" 
+                href="/platform-overview.html" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
               >
-                Whitepaper
+                Platform Overview
               </a>
               <Link 
                 href="/whiteboard/widgets" 

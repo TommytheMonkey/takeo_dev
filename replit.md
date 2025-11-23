@@ -60,8 +60,8 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
 - Navigation:
   - "See the deck" - `/TOM_Deck_2025_10_30.pdf` - Pitch deck PDF (opens in new tab)
   - "Our Story" - `/whiteboard/story` - Full story page with Tommy's bio and company history
-  - "Whitepaper" - `/Takeo_Whitepaper_2025_v2.pdf` - Takeo whitepaper PDF (opens in new tab)
-  - "Demo" - `/whiteboard/widgets` - Demo page with four live tools
+  - "Platform Overview" - `/platform-overview.html` - Takeo OS platform overview whitepaper (opens in new tab, formerly "Whitepaper")
+  - "Demo" - `/whiteboard/widgets` - Demo page with five live tools
   - `/whiteboard/slidedeck` - Full-screen slide deck viewer (13 slides) - accessible via direct URL
 - Components:
   - `Slideshow.tsx` - Auto-cycling slideshow with 4 demo screenshots (10 seconds per image), manual navigation controls
