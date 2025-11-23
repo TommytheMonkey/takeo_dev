@@ -192,7 +192,7 @@ export default function WidgetsPage() {
             </div>
           </div>
 
-          {/* Contractor Bid Box Widget */}
+          {/* Contractor Bid Manager Widget */}
           <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-[#E9E44C] hover:bg-gray-800 transition-all duration-200 group">
             <div className="flex flex-col items-center text-center">
               {/* Icon */}
@@ -214,12 +214,12 @@ export default function WidgetsPage() {
               
               {/* Title */}
               <h3 className="text-xl font-bold mb-2 group-hover:text-[#E9E44C] transition-colors">
-                Contractor Bid Box
+                Contractor Bid Manager
               </h3>
               
               {/* Description */}
               <p className="text-gray-400 text-sm">
-                Manage and track contractor bids efficiently
+                AI-powered preconstruction & bid management
               </p>
               
               {/* Links */}
@@ -237,7 +237,7 @@ export default function WidgetsPage() {
                 </a>
                 <span className="text-gray-600">|</span>
                 <a 
-                  href="/whitepapers/contractor-bid-box.html" 
+                  href="/whitepapers/contractor-bid-manager.html" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#E9E44C] transition-colors"

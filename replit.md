@@ -92,10 +92,10 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
   - **Scope Extractor**: Link to external tool at https://scope-extractor-tommy199.replit.app
   - **Change Order Generator**: Link to external tool at https://worksheet-comparison-tommy199.replit.app (formerly "Worksheet Comparison Tool")
   - **Master Job Registry**: Link to external tool at https://takeo-job-registry-tommy199.replit.app
-  - **Contractor Bid Box**: Link to external tool at https://bid-manager-2-logan14.replit.app/
+  - **Contractor Bid Manager**: Link to external tool at https://bid-manager-2-logan14.replit.app/ (formerly "Contractor Bid Box")
   - **Catalog Sync**: Link to external tool at https://catalog-matcher-tommy199.replit.app
   - Each widget has dual links: "Open tool" (live demo) | "Whitepaper" (product documentation)
-  - Whitepapers stored in `/public/whitepapers/` directory (Catalog Sync and Change Order Generator complete)
+  - Whitepapers stored in `/public/whitepapers/` directory (all 5 whitepapers complete)
   - Yellow (#E9E44C) icons matching brand colors
   - Card-based grid layout ready for additional demos
   - Hover effects with border and text color changes
