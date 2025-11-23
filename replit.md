@@ -93,7 +93,8 @@ This is a Next.js 15.5.3 application using React 19 and Tailwind CSS 4. The proj
   - **Worksheet Comparison Tool**: Link to external tool at https://worksheet-comparison-tommy199.replit.app
   - **Master Job Registry**: Link to external tool at https://takeo-job-registry-tommy199.replit.app
   - **Contractor Bid Box**: Link to external tool at https://bid-manager-2-logan14.replit.app/
-  - Yellow (#E9E44C) icons matching brand colors (document icon for Scope Extractor, columns icon for Worksheet Comparison, clipboard icon for Master Job Registry, document-with-corner icon for Contractor Bid Box)
+  - **Catalog Sync**: Link to external tool at https://catalog-matcher-tommy199.replit.app
+  - Yellow (#E9E44C) icons matching brand colors (document icon for Scope Extractor, columns icon for Worksheet Comparison, clipboard icon for Master Job Registry, document-with-corner icon for Contractor Bid Box, refresh/sync icon for Catalog Sync)
   - Card-based grid layout ready for additional demos
   - Hover effects with border and text color changes
   - Opens in new tab with proper security attributes
