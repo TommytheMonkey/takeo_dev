@@ -341,20 +341,51 @@ export default function WidgetsPage() {
             </div>
           </div>
 
-          {/* Placeholder for future widgets */}
-          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+          {/* Slack Bots Widget */}
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-[#E9E44C] hover:bg-gray-800 transition-all duration-200 group">
             <div className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 mb-4 flex items-center justify-center bg-gray-800 rounded-lg">
-                <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              {/* Icon */}
+              <div className="w-16 h-16 mb-4 flex items-center justify-center bg-[#E9E44C] rounded-lg group-hover:scale-110 transition-transform duration-200">
+                <svg 
+                  className="w-8 h-8 text-black" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" 
+                  />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-2 text-gray-400">
-                More Coming Soon
+              
+              {/* Title */}
+              <h3 className="text-xl font-bold mb-2 group-hover:text-[#E9E44C] transition-colors">
+                Slack Bots
               </h3>
+              
+              {/* Description */}
               <p className="text-gray-400 text-sm">
-                Additional demos in development
+                Eliminate clicks and increase communication via Slack!
               </p>
+              
+              {/* Links */}
+              <div className="mt-4 text-xs text-gray-300 flex items-center gap-2">
+                <span className="text-gray-400">
+                  {'{'}Inside Slack{'}'}
+                </span>
+                <span className="text-gray-600">|</span>
+                <a 
+                  href="/whitepapers/slack-bots.html" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E9E44C] transition-colors"
+                >
+                  Whitepaper
+                </a>
+              </div>
             </div>
           </div>
         </div>
