@@ -536,8 +536,19 @@ export default function TeamPage() {
         </div>
       </div>
 
-      <div style={{ textAlign: 'center', padding: '3rem 2rem', background: '#F1F2F2' }}>
-        <Link href="/whiteboard" className="back-link">
+      <div style={{ textAlign: 'center', padding: '2rem', background: '#F1F2F2' }}>
+        <Link 
+          href="/whiteboard" 
+          style={{ 
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            color: '#00391F',
+            textDecoration: 'none',
+            fontSize: '1rem',
+            fontWeight: '600'
+          }}
+        >
           ← Back to Whiteboard
         </Link>
       </div>
