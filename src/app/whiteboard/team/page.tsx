@@ -536,9 +536,7 @@ export default function TeamPage() {
         </div>
       </div>
 
-      <div className="cta-section">
-        <h2>🐵 Want to Join the Crew?</h2>
-        <p>We're always looking for talented people who share our passion for the landscape industry and innovative technology.</p>
+      <div style={{ textAlign: 'center', padding: '3rem 2rem', background: '#F1F2F2' }}>
         <Link href="/whiteboard" className="back-link">
           ← Back to Whiteboard
         </Link>
