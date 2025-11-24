@@ -71,6 +71,12 @@ export default function WhiteboardPage() {
               >
                 Demo
               </Link>
+              <Link 
+                href="/whiteboard/team" 
+                className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
+              >
+                Team
+              </Link>
             </nav>
           </header>
 
