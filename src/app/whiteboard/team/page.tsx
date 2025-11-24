@@ -517,7 +517,7 @@ export default function TeamPage() {
 
           <div className="team-card">
             <div className="card-header">
-              <div className="card-avatar">CC</div>
+              <img src="/team/cara.jpg" alt="Cara Clark" className="card-photo" />
               <div className="card-title-group">
                 <h3 className="card-name">Cara Clark</h3>
                 <p className="card-role">Marketing Assistant</p>
