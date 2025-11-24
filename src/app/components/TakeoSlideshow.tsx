@@ -192,14 +192,14 @@ export default function TakeoSlideshow() {
         {/* Navigation Arrows */}
         <button
           onClick={() => changeSlide(-1)}
-          className="absolute top-1/2 left-5 -translate-y-1/2 z-[4] bg-white/10 border-2 border-white/30 text-white text-2xl w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-all hover:bg-[#F5ED60]/20 hover:border-[#F5ED60] hover:scale-110 backdrop-blur-[10px]"
+          className="absolute bottom-8 left-5 z-[4] bg-white/10 border-2 border-white/30 text-white text-2xl w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-all hover:bg-[#F5ED60]/20 hover:border-[#F5ED60] hover:scale-110 backdrop-blur-[10px]"
           aria-label="Previous slide"
         >
           ‹
         </button>
         <button
           onClick={() => changeSlide(1)}
-          className="absolute top-1/2 right-5 -translate-y-1/2 z-[4] bg-white/10 border-2 border-white/30 text-white text-2xl w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-all hover:bg-[#F5ED60]/20 hover:border-[#F5ED60] hover:scale-110 backdrop-blur-[10px]"
+          className="absolute bottom-8 right-5 z-[4] bg-white/10 border-2 border-white/30 text-white text-2xl w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-all hover:bg-[#F5ED60]/20 hover:border-[#F5ED60] hover:scale-110 backdrop-blur-[10px]"
           aria-label="Next slide"
         >
           ›
