@@ -29,7 +29,7 @@ export default function TakeoSlideshow() {
       eyebrow: '⚡ Unstoppable Advantage',
       headline: 'We Know Subcontractors. Because We Are Subcontractors.',
       subheadline: 'Deep industry expertise meets world-class engineering. That combination is unbeatable.',
-      description: "80% of our leads come from referrals. ERW, BrightView, Ruppert, Nova, Oberson's—they trust us because we understand their pain. We talk to customers daily. We have built takeoffs for thousands of projects. Now we are scaling that knowledge into the platform that will define pre-construction for the next decade.",
+      description: "80% of our leads come from referrals. From the $5M contractor just getting started to the $500M behemoth, we have their trust - because we understand their business, their process, and their pain. We talk to customers daily. We have built takeoffs for thousands of projects. Now we are scaling that knowledge into the platform that will define pre-construction for the next decade.",
       ctaText: 'Our Story',
       ctaLink: '/whiteboard/story',
       backgroundImage: '/slideshow/slide3.png'
