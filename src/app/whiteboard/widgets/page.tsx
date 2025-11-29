@@ -63,9 +63,9 @@ export default function WidgetsPage() {
         {/* Contractor Bid Manager - Full Width at Top */}
         <div className="mb-6">
           <div className="bg-gray-900 border border-gray-800 rounded-lg p-8 hover:border-[#E9E44C] hover:bg-gray-800 transition-all duration-200 group">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+            <div className="flex flex-col items-center text-center">
               {/* Icon */}
-              <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center bg-[#E9E44C] rounded-lg group-hover:scale-110 transition-transform duration-200">
+              <div className="w-20 h-20 mb-4 flex items-center justify-center bg-[#E9E44C] rounded-lg group-hover:scale-110 transition-transform duration-200">
                 <svg 
                   className="w-10 h-10 text-black" 
                   fill="none" 
@@ -81,40 +81,38 @@ export default function WidgetsPage() {
                 </svg>
               </div>
               
-              <div className="flex-1 text-center md:text-left">
-                {/* Title */}
-                <h3 className="text-2xl font-bold mb-2 group-hover:text-[#E9E44C] transition-colors">
-                  Contractor Bid Manager
-                </h3>
-                
-                {/* Description */}
-                <p className="text-gray-400 text-base mb-4">
-                  AI-powered preconstruction & bid management - the complete system for managing opportunities from first contact to signed contract.
-                </p>
-                
-                {/* Links */}
-                <div className="text-sm text-gray-300 flex items-center justify-center md:justify-start gap-3">
-                  <a 
-                    href="https://takeo-master-wireframe--tommy199.replit.app" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#E9E44C] transition-colors flex items-center gap-1"
-                  >
-                    <span>Open tool</span>
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
-                  <span className="text-gray-600">|</span>
-                  <a 
-                    href="/whitepapers/contractor-bid-manager.html" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#E9E44C] transition-colors"
-                  >
-                    Whitepaper
-                  </a>
-                </div>
+              {/* Title */}
+              <h3 className="text-2xl font-bold mb-2 group-hover:text-[#E9E44C] transition-colors">
+                Contractor Bid Manager
+              </h3>
+              
+              {/* Description */}
+              <p className="text-gray-400 text-base mb-4 max-w-2xl">
+                AI-powered preconstruction & bid management - the complete system for managing opportunities from first contact to signed contract.
+              </p>
+              
+              {/* Links */}
+              <div className="text-sm text-gray-300 flex items-center justify-center gap-3">
+                <a 
+                  href="https://takeo-master-wireframe--tommy199.replit.app" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E9E44C] transition-colors flex items-center gap-1"
+                >
+                  <span>Open tool</span>
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                <span className="text-gray-600">|</span>
+                <a 
+                  href="/whitepapers/contractor-bid-manager.html" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E9E44C] transition-colors"
+                >
+                  Whitepaper
+                </a>
               </div>
             </div>
           </div>
