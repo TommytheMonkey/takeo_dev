@@ -65,6 +65,14 @@ export default function WhiteboardPage() {
               >
                 Platform Overview
               </a>
+              <a 
+                href="/TOM_Product_Roadmap.pdf" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
+              >
+                Product Roadmap
+              </a>
               <Link 
                 href="/whiteboard/widgets" 
                 className="font-bold text-white hover:text-[#E9E44C] hover:underline transition-all duration-150"
