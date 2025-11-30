@@ -230,18 +230,52 @@ export default function TeamPage() {
 
         .card-title-group {
           color: white;
+          flex: 1;
         }
 
         .card-name {
           font-size: 1.25rem;
           font-weight: 800;
           margin-bottom: 0.25rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
         }
 
         .card-role {
           font-size: 0.9rem;
           opacity: 0.85;
           font-weight: 600;
+        }
+
+        .linkedin-icon {
+          width: 20px;
+          height: 20px;
+          opacity: 0.9;
+          transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .linkedin-icon:hover {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+
+        .member-name-row {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 0.25rem;
+        }
+
+        .founder-linkedin {
+          width: 24px;
+          height: 24px;
+          opacity: 0.7;
+          transition: opacity 0.2s ease;
+        }
+
+        .founder-linkedin:hover {
+          opacity: 1;
         }
 
         .card-body {
@@ -356,7 +390,14 @@ export default function TeamPage() {
               <img src="/team/tommy.jpg" alt="Tommy Lather" className="founder-photo" />
             </div>
             <div className="founder-content">
-              <h2 className="member-name">Tommy Lather</h2>
+              <div className="member-name-row">
+                <h2 className="member-name" style={{ marginBottom: 0 }}>Tommy Lather</h2>
+                <a href="https://www.linkedin.com/in/tommylather/" target="_blank" rel="noopener noreferrer">
+                  <svg className="founder-linkedin" viewBox="0 0 24 24" fill="#00391F">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
+              </div>
               <p className="member-title">Founder</p>
               <div className="member-meta">
                 <span className="meta-item"><span>📍</span> Winston-Salem / Greensboro, NC</span>
@@ -378,7 +419,14 @@ export default function TeamPage() {
             <div className="card-header">
               <img src="/team/logan.jpg" alt="Logan Hart" className="card-photo" />
               <div className="card-title-group">
-                <h3 className="card-name">Logan Hart</h3>
+                <h3 className="card-name">
+                  Logan Hart
+                  <a href="https://www.linkedin.com/in/logan-h/" target="_blank" rel="noopener noreferrer">
+                    <svg className="linkedin-icon" viewBox="0 0 24 24" fill="#F5ED60">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                </h3>
                 <p className="card-role">Chief Technology Officer</p>
               </div>
             </div>
@@ -397,7 +445,14 @@ export default function TeamPage() {
             <div className="card-header">
               <img src="/team/janet.jpg" alt="Janet Lee" className="card-photo" />
               <div className="card-title-group">
-                <h3 className="card-name">Janet Lee</h3>
+                <h3 className="card-name">
+                  Janet Lee
+                  <a href="https://www.linkedin.com/in/janet-lee-84ab979/" target="_blank" rel="noopener noreferrer">
+                    <svg className="linkedin-icon" viewBox="0 0 24 24" fill="#F5ED60">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                </h3>
                 <p className="card-role">Director of Operations</p>
               </div>
             </div>
@@ -420,7 +475,14 @@ export default function TeamPage() {
             <div className="card-header">
               <img src="/team/amy.jpg" alt="Amy MacPherson" className="card-photo" />
               <div className="card-title-group">
-                <h3 className="card-name">Amy MacPherson</h3>
+                <h3 className="card-name">
+                  Amy MacPherson
+                  <a href="https://www.linkedin.com/in/amy-macpherson-40293725/" target="_blank" rel="noopener noreferrer">
+                    <svg className="linkedin-icon" viewBox="0 0 24 24" fill="#F5ED60">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                </h3>
                 <p className="card-role">Production Manager</p>
               </div>
             </div>
@@ -437,9 +499,16 @@ export default function TeamPage() {
 
           <div className="team-card">
             <div className="card-header">
-              <img src="/team/leah.jpg" alt="Leah Piatt" className="card-photo" />
+              <img src="/team/leah.jpg" alt="Leah Piatt Papageorgiou" className="card-photo" />
               <div className="card-title-group">
-                <h3 className="card-name">Leah Piatt</h3>
+                <h3 className="card-name">
+                  Leah Piatt Papageorgiou
+                  <a href="https://www.linkedin.com/in/leah-papageorgiou-27088a217/" target="_blank" rel="noopener noreferrer">
+                    <svg className="linkedin-icon" viewBox="0 0 24 24" fill="#F5ED60">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                </h3>
                 <p className="card-role">Production Manager</p>
               </div>
             </div>
@@ -456,9 +525,16 @@ export default function TeamPage() {
 
           <div className="team-card">
             <div className="card-header">
-              <img src="/team/priscilla.jpg" alt="Priscilla" className="card-photo" />
+              <img src="/team/priscilla.jpg" alt="Priscilla Rosales" className="card-photo" />
               <div className="card-title-group">
-                <h3 className="card-name">Priscilla</h3>
+                <h3 className="card-name">
+                  Priscilla Rosales
+                  <a href="https://www.linkedin.com/in/priscilla-r-a67b081b9/" target="_blank" rel="noopener noreferrer">
+                    <svg className="linkedin-icon" viewBox="0 0 24 24" fill="#F5ED60">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                </h3>
                 <p className="card-role">Production Manager</p>
               </div>
             </div>
@@ -500,7 +576,14 @@ export default function TeamPage() {
             <div className="card-header">
               <img src="/team/konur.jpg" alt="Konur Papageorgiou" className="card-photo" />
               <div className="card-title-group">
-                <h3 className="card-name">Konur Papageorgiou</h3>
+                <h3 className="card-name">
+                  Konur Papageorgiou
+                  <a href="https://www.linkedin.com/in/konur-papageorgiou-7b2869223/" target="_blank" rel="noopener noreferrer">
+                    <svg className="linkedin-icon" viewBox="0 0 24 24" fill="#F5ED60">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                </h3>
                 <p className="card-role">Developer</p>
               </div>
             </div>
@@ -519,7 +602,14 @@ export default function TeamPage() {
             <div className="card-header">
               <img src="/team/cara.jpg" alt="Cara Clark" className="card-photo" />
               <div className="card-title-group">
-                <h3 className="card-name">Cara Clark</h3>
+                <h3 className="card-name">
+                  Cara Clark
+                  <a href="https://www.linkedin.com/in/cara-clark-4710468/" target="_blank" rel="noopener noreferrer">
+                    <svg className="linkedin-icon" viewBox="0 0 24 24" fill="#F5ED60">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                </h3>
                 <p className="card-role">Marketing Assistant</p>
               </div>
             </div>
