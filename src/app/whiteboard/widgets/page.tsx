@@ -36,7 +36,7 @@ export default function WidgetsPage() {
             </p>
             
             {/* Action Buttons */}
-            <div className="flex gap-6 flex-wrap justify-center md:justify-start">
+            <div className="flex flex-col items-center md:items-start gap-3">
               <a 
                 href="https://takeo-master-wireframe--tommy199.replit.app"
                 target="_blank"
@@ -50,10 +50,9 @@ export default function WidgetsPage() {
                 href="/platform-overview.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#E9E44C] text-slate-900 px-7 py-3.5 rounded-lg font-semibold hover:bg-[#f4ea45] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(245,237,96,0.3)] transition-all duration-200"
+                className="text-xs text-gray-300 hover:text-[#E9E44C] transition-colors"
               >
-                Platform Overview
-                <span className="text-lg">→</span>
+                Read the Overview
               </a>
             </div>
           </div>
