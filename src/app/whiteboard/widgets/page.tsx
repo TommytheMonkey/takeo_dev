@@ -36,7 +36,7 @@ export default function WidgetsPage() {
             </p>
             
             {/* Action Buttons */}
-            <div className="flex flex-col items-center md:items-start gap-3">
+            <div className="flex flex-col items-center gap-3 w-full">
               <a 
                 href="https://takeo-master-wireframe--tommy199.replit.app"
                 target="_blank"
