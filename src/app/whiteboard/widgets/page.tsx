@@ -64,7 +64,7 @@ export default function WidgetsPage() {
             Explore Individual Components
           </h2>
           <p className="text-lg text-slate-400">
-            Try each tool live and see how they work together
+            Explore the platform's core functions
           </p>
         </div>
 
@@ -101,19 +101,7 @@ export default function WidgetsPage() {
               </p>
               
               {/* Links */}
-              <div className="mt-4 text-xs text-gray-300 flex items-center gap-2">
-                <a 
-                  href="https://scope-extractor-tommy199.replit.app" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#E9E44C] transition-colors flex items-center gap-1"
-                >
-                  <span>Open tool</span>
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-                <span className="text-gray-600">|</span>
+              <div className="mt-4 text-xs text-gray-300">
                 <a 
                   href="/whitepapers/scope-extractor.html" 
                   target="_blank"
@@ -157,19 +145,7 @@ export default function WidgetsPage() {
               </p>
               
               {/* Links */}
-              <div className="mt-4 text-xs text-gray-300 flex items-center gap-2">
-                <a 
-                  href="https://takeo-job-registry-tommy199.replit.app" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#E9E44C] transition-colors flex items-center gap-1"
-                >
-                  <span>Open tool</span>
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-                <span className="text-gray-600">|</span>
+              <div className="mt-4 text-xs text-gray-300">
                 <a 
                   href="/whitepapers/master-job-registry.html" 
                   target="_blank"
@@ -216,19 +192,7 @@ export default function WidgetsPage() {
               </p>
               
               {/* Links */}
-              <div className="mt-4 text-xs text-gray-300 flex items-center gap-2">
-                <a 
-                  href="https://catalog-matcher-tommy199.replit.app" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#E9E44C] transition-colors flex items-center gap-1"
-                >
-                  <span>Open tool</span>
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-                <span className="text-gray-600">|</span>
+              <div className="mt-4 text-xs text-gray-300">
                 <a 
                   href="/whitepapers/catalog-sync.html" 
                   target="_blank"
@@ -272,11 +236,7 @@ export default function WidgetsPage() {
               </p>
               
               {/* Links */}
-              <div className="mt-4 text-xs text-gray-300 flex items-center gap-2">
-                <span className="text-gray-400">
-                  {'{'}Inside Slack{'}'}
-                </span>
-                <span className="text-gray-600">|</span>
+              <div className="mt-4 text-xs text-gray-300">
                 <a 
                   href="/whitepapers/slack-bots.html" 
                   target="_blank"
