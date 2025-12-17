@@ -43,7 +43,7 @@ export default function WidgetsPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#E9E44C] text-slate-900 px-7 py-3.5 rounded-lg font-semibold hover:bg-[#f4ea45] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(245,237,96,0.3)] transition-all duration-200"
               >
-                Open Clickable Mockup
+                Open Contractor Mockup
                 <span className="text-lg">→</span>
               </a>
               <a 
@@ -53,6 +53,15 @@ export default function WidgetsPage() {
                 className="text-xs text-gray-300 hover:text-[#E9E44C] transition-colors"
               >
                 Read the Overview
+              </a>
+              <a 
+                href="https://takeo-for-suppliers--tommy199.replit.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#E9E44C] text-slate-900 px-7 py-3.5 rounded-lg font-semibold hover:bg-[#f4ea45] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(245,237,96,0.3)] transition-all duration-200"
+              >
+                Open Supplier Mockup
+                <span className="text-lg">→</span>
               </a>
             </div>
           </div>
