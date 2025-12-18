@@ -63,6 +63,14 @@ export default function WidgetsPage() {
                 Open Supplier Mockup
                 <span className="text-lg">→</span>
               </a>
+              <a 
+                href="/supplier-overview.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-gray-300 hover:text-[#E9E44C] transition-colors"
+              >
+                Read the Overview
+              </a>
             </div>
           </div>
         </div>

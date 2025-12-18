@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takeo for Suppliers - Product Whitepaper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --banana: #F5ED60;
+            --jungle: #00391F;
+            --jungle-light: #004d2a;
+            --concrete: #F1F2F2;
+            --black: #231F20;
+            --surface: #2a2526;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--concrete);
+            color: var(--black);
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .whitepaper {
+            background: white;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--jungle);
+            color: var(--banana);
+            padding: 3rem 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            right: -80px;
+            top: -80px;
+            width: 280px;
+            height: 280px;
+            border: 50px solid var(--banana);
+            border-radius: 50%;
+            opacity: 0.12;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            right: 60px;
+            bottom: -40px;
+            width: 120px;
+            height: 120px;
+            background: var(--banana);
+            border-radius: 50%;
+            opacity: 0.08;
+        }
+
+        .logo {
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 500;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            color: var(--banana);
+        }
+
+        /* Content */
+        .content {
+            padding: 3rem 3.5rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--jungle);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .icon {
+            font-size: 1.3rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--jungle);
+            margin: 1.5rem 0 0.75rem 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* Problem Box */
+        .problem-box {
+            background: linear-gradient(135deg, var(--black) 0%, var(--surface) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--error);
+            margin: 1.5rem 0;
+        }
+
+        .problem-box p {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .problem-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .problem-box .highlight {
+            color: var(--banana);
+            font-weight: 700;
+            background: none;
+            padding: 0;
+        }
+
+        /* Solution Box */
+        .solution-box {
+            background: linear-gradient(135deg, var(--jungle) 0%, var(--jungle-light) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--banana);
+            margin: 1.5rem 0;
+        }
+
+        .solution-box .highlight {
+            color: var(--banana);
+            font-weight: 700;
+        }
+
+        /* Highlight */
+        .highlight {
+            background: var(--banana);
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: var(--concrete);
+            padding: 1.25rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--jungle);
+            display: block;
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #666;
+            font-weight: 600;
+            margin-top: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .feature-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--jungle);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-card p {
+            font-size: 0.85rem;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Demand Breakdown */
+        .demand-breakdown {
+            background: var(--concrete);
+            border-radius: 8px;
+            padding: 1.75rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .demand-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .demand-header h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--jungle);
+            margin: 0;
+        }
+
+        .demand-total {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .demand-bar {
+            height: 32px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            margin-bottom: 1rem;
+        }
+
+        .demand-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .segment-inventory {
+            background: var(--banana);
+            color: var(--jungle);
+            font-weight: 700;
+        }
+
+        .segment-known {
+            background: var(--jungle);
+        }
+
+        .segment-estimated {
+            background: var(--jungle-light);
+            opacity: 0.6;
+        }
+
+        .demand-legend {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        /* Supplier Types */
+        .supplier-types {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .supplier-type {
+            background: white;
+            border: 2px solid var(--concrete);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .supplier-type:hover {
+            border-color: var(--jungle);
+            box-shadow: 0 4px 12px rgba(0,57,31,0.1);
+        }
+
+        .supplier-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .supplier-type h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--jungle);
+            margin-bottom: 0.4rem;
+        }
+
+        .supplier-type p {
+            font-size: 0.8rem;
+            color: #666;
+            margin: 0;
+        }
+
+        /* Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.85rem;
+        }
+
+        .data-table th {
+            background: var(--jungle);
+            color: white;
+            padding: 0.85rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--concrete);
+        }
+
+        .data-table tr:nth-child(even) {
+            background: rgba(0,0,0,0.02);
+        }
+
+        .data-table .mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Status Indicators */
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .status-success .status-dot { background: var(--success); }
+        .status-warning .status-dot { background: var(--warning); }
+        .status-error .status-dot { background: var(--error); }
+        .status-success { color: var(--success); }
+        .status-warning { color: var(--warning); }
+        .status-error { color: var(--error); }
+
+        /* Workflow Steps */
+        .workflow {
+            display: flex;
+            gap: 0;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .workflow-step {
+            flex: 1;
+            text-align: center;
+            padding: 1.25rem 1rem;
+            background: var(--concrete);
+            position: relative;
+        }
+
+        .workflow-step:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+
+        .workflow-step:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+
+        .workflow-step::after {
+            content: '→';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: var(--jungle);
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .workflow-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: var(--jungle);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 auto 0.6rem;
+        }
+
+        .workflow-step h5 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--jungle);
+            margin-bottom: 0.3rem;
+        }
+
+        .workflow-step p {
+            font-size: 0.75rem;
+            color: #666;
+            margin: 0;
+        }
+
+        /* Callout */
+        .callout {
+            background: linear-gradient(135deg, rgba(245,237,96,0.15) 0%, rgba(245,237,96,0.05) 100%);
+            border: 1px solid rgba(245,237,96,0.4);
+            border-left: 4px solid var(--banana);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+
+        .callout h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--jungle);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .callout p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: #444;
+        }
+
+        /* Comparison Grid */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-card {
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .comparison-card.known {
+            background: var(--jungle);
+            color: white;
+        }
+
+        .comparison-card.estimated {
+            background: var(--concrete);
+            border: 2px dashed rgba(0,57,31,0.3);
+        }
+
+        .comparison-card h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .comparison-card.known h4 {
+            color: var(--banana);
+        }
+
+        .comparison-card.estimated h4 {
+            color: var(--jungle);
+        }
+
+        .comparison-card ul {
+            list-style: none;
+            font-size: 0.85rem;
+        }
+
+        .comparison-card li {
+            padding: 0.3rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .comparison-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .comparison-card.known li::before {
+            color: var(--banana);
+        }
+
+        .comparison-card.estimated li::before {
+            color: var(--jungle);
+        }
+
+        /* Categories Grid */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .category-pill {
+            background: white;
+            border: 1px solid var(--concrete);
+            border-radius: 6px;
+            padding: 0.85rem;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--jungle);
+        }
+
+        .category-pill .cat-icon {
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--jungle);
+            color: white;
+            padding: 2rem 3.5rem;
+            text-align: center;
+        }
+
+        .footer-tagline {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--banana);
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-sub {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Value Props */
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .value-prop {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid var(--concrete);
+        }
+
+        .value-prop .prop-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .value-prop h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--jungle);
+            margin-bottom: 0.4rem;
+        }
+
+        .value-prop p {
+            font-size: 0.8rem;
+            color: #666;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            .header, .content, .footer {
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feature-grid,
+            .comparison-grid,
+            .supplier-types,
+            .value-props {
+                grid-template-columns: 1fr;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .workflow {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .workflow-step {
+                border-radius: 8px !important;
+            }
+
+            .workflow-step::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="whitepaper">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">🌱 TAKEO</div>
+            <h1>Takeo for Suppliers</h1>
+            <p class="subtitle">Supply Intelligence Platform for Nurseries, Manufacturers & Distributors</p>
+        </div>
+
+        <div class="content">
+
+            <!-- Executive Summary -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">📊</span>
+                    <span>Executive Summary</span>
+                </div>
+
+                <p><strong>Takeo for Suppliers</strong> is a market intelligence platform that gives landscape material suppliers—nurseries, irrigation manufacturers, lighting companies, site furnishing producers, and distributors—unprecedented visibility into <span class="highlight">real contractor demand</span>.</p>
+
+                <p>By aggregating bid data from thousands of commercial construction projects flowing through the Takeo OS contractor platform, suppliers can finally answer the questions that matter: <em>What do contractors actually need? When do they need it? Where? And how does my inventory compare?</em></p>
+
+            </div>
+
+            <!-- The Problem -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">⚠️</span>
+                    <span>The Problem</span>
+                </div>
+
+                <div class="problem-box">
+                    <p><span class="highlight">Suppliers are flying blind.</span> Nurseries grow crops based on gut instinct and historical patterns. Manufacturers set production schedules months in advance without knowing what contractors will actually specify. Distributors stock inventory hoping demand materializes.</p>
+                    
+                    <p>The result? <strong>Chronic misalignment between supply and demand.</strong> Suppliers sit on oversupply of items nobody needs while contractors scramble to source high-demand materials that aren't available. Money is left on the table—or worse, lost to competitors who happened to guess right.</p>
+
+                    <p>And here's the real challenge: <span class="highlight">even "demand data" only tells part of the story.</span> Most suppliers have zero visibility into the residential, retail, HOA, and enhancement markets that represent 40-60% of total demand.</p>
+                </div>
+            </div>
+
+            <!-- The Solution -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">✅</span>
+                    <span>The Solution</span>
+                </div>
+
+                <div class="solution-box">
+                    <p><strong>Takeo for Suppliers</strong> transforms the Takeo OS bid ecosystem into a <span class="highlight">real-time demand signal</span> for the entire landscape supply chain. Suppliers upload their catalog, and instantly see how their inventory maps against actual project demand—by species, size, region, quarter, and project type.</p>
+                    
+                    <p>But we go further. Our platform also provides <span class="highlight">estimated market demand</span> for segments outside the Takeo ecosystem—residential construction, retail garden centers, HOA maintenance, enhancement work—so suppliers see the complete picture, not just commercial construction.</p>
+                </div>
+
+                <h3>Two Types of Demand Intelligence</h3>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card known">
+                        <h4>📋 Known Demand</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.75rem;">Real project data from the Takeo ecosystem</p>
+                        <ul>
+                            <li>Commercial construction projects</li>
+                            <li>Landscape architect specifications</li>
+                            <li>General contractor bid packages</li>
+                            <li>Municipal & institutional work</li>
+                            <li>Verified quantities & timelines</li>
+                            <li><strong>High confidence</strong></li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card estimated">
+                        <h4>📊 Estimated Market</h4>
+                        <p style="font-size: 0.85rem; color: #555; margin-bottom: 0.75rem;">Modeled demand outside Takeo</p>
+                        <ul>
+                            <li>Residential new construction</li>
+                            <li>Retail / garden centers</li>
+                            <li>HOA & property management</li>
+                            <li>Enhancement & renovation</li>
+                            <li>Regional modeling & permit data</li>
+                            <li><strong>Medium-High confidence</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demand Visualization -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">📈</span>
+                    <span>Demand Visualization</span>
+                </div>
+
+                <p>Suppliers see exactly where they stand against total market demand—and where the opportunities are.</p>
+
+                <div class="demand-breakdown">
+                    <div class="demand-header">
+                        <h4>Quercus virginiana 65gal — Dallas-Fort Worth Region</h4>
+                        <span class="demand-total">Total Market: 7,083 units</span>
+                    </div>
+                    <div class="demand-bar">
+                        <div class="demand-segment segment-inventory" style="width: 5%;">5%</div>
+                        <div class="demand-segment segment-known" style="width: 36%;">Known: 41%</div>
+                        <div class="demand-segment segment-estimated" style="width: 59%;">Est: 59%</div>
+                    </div>
+                    <div class="demand-legend">
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background: var(--banana);"></div>
+                            <span>Your Inventory (383)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background: var(--jungle);"></div>
+                            <span>Known Demand (2,883)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background: var(--jungle-light); opacity: 0.6;"></div>
+                            <span>Estimated Market (4,200)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout">
+                    <h4>💡 Opportunity Identified</h4>
+                    <p>Your current inventory covers only <strong>5% of total market demand</strong> for this SKU. Known demand from 47 active commercial projects shows a gap of 2,500 units. Estimated residential and retail demand adds another 4,200 units of opportunity—<strong>total addressable gap: 6,700 units ($402K value)</strong>.</p>
+                </div>
+            </div>
+
+            <!-- Who It's For -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🏢</span>
+                    <span>Who It's For</span>
+                </div>
+
+                <p>Takeo for Suppliers serves the entire landscape supply chain—with features tailored to each supplier type.</p>
+
+                <div class="supplier-types">
+                    <div class="supplier-type">
+                        <div class="supplier-icon">🌱</div>
+                        <h4>Nurseries & Growers</h4>
+                        <p>Match growing schedules to demand by species, size, and quarter</p>
+                    </div>
+                    <div class="supplier-type">
+                        <div class="supplier-icon">🏭</div>
+                        <h4>Manufacturers</h4>
+                        <p>Plan production runs with lead time and capacity optimization</p>
+                    </div>
+                    <div class="supplier-type">
+                        <div class="supplier-icon">🚚</div>
+                        <h4>Distributors</h4>
+                        <p>Stock the right products in the right regions at the right time</p>
+                    </div>
+                </div>
+
+                <h3>Product Categories Supported</h3>
+
+                <div class="categories-grid">
+                    <div class="category-pill">
+                        <span class="cat-icon">🌳</span>
+                        Plant Material
+                    </div>
+                    <div class="category-pill">
+                        <span class="cat-icon">💧</span>
+                        Irrigation
+                    </div>
+                    <div class="category-pill">
+                        <span class="cat-icon">💡</span>
+                        Lighting
+                    </div>
+                    <div class="category-pill">
+                        <span class="cat-icon">🪑</span>
+                        Site Furnishings
+                    </div>
+                    <div class="category-pill">
+                        <span class="cat-icon">🧱</span>
+                        Hardscape
+                    </div>
+                    <div class="category-pill">
+                        <span class="cat-icon">➖</span>
+                        Edging
+                    </div>
+                    <div class="category-pill">
+                        <span class="cat-icon">🔽</span>
+                        Drainage
+                    </div>
+                    <div class="category-pill">
+                        <span class="cat-icon">🔧</span>
+                        Accessories
+                    </div>
+                </div>
+            </div>
+
+            <!-- For Manufacturers -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🏭</span>
+                    <span>For Manufacturers: Production Intelligence</span>
+                </div>
+
+                <p>Hardgoods manufacturers—irrigation, lighting, site furnishings, hardscape—operate differently than nurseries. They need to manage <strong>production schedules</strong>, <strong>lead times</strong>, <strong>MOQs</strong>, and <strong>distribution networks</strong>. Takeo for Suppliers handles all of it.</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>📅 Production Scheduling</h4>
+                        <p>Gantt-style timeline view of production batches. See capacity utilization across facilities. Get alerts when you need to start production to meet demand.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⏱️ Lead Time Management</h4>
+                        <p>Set standard and expedited lead times by product line. System automatically flags projects where lead time exceeds time-to-install.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📦 Variant & SKU Tracking</h4>
+                        <p>Support for product variants (sizes, finishes, voltages). Track inventory and demand at the SKU level with price break support.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🚚 Distribution Network</h4>
+                        <p>Map your distributor and stocking dealer network. See inventory levels across channels. Get alerts when distributors are running low.</p>
+                    </div>
+                </div>
+
+                <h3>Sample: Irrigation Demand Table</h3>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Known</th>
+                            <th>Est. Market</th>
+                            <th>Total</th>
+                            <th>Available</th>
+                            <th>Gap</th>
+                            <th>Lead Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Pro-HC 6-Station</strong><br><span style="font-size: 0.75rem; color: #666;">PHC-600-SS</span></td>
+                            <td class="mono">1,200</td>
+                            <td class="mono">2,000</td>
+                            <td class="mono"><strong>3,200</strong></td>
+                            <td class="mono">2,070</td>
+                            <td><span class="status status-warning"><span class="status-dot"></span>-1,130</span></td>
+                            <td class="mono">4 wks</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PGP Ultra 4"</strong><br><span style="font-size: 0.75rem; color: #666;">PGP-04-SS</span></td>
+                            <td class="mono">8,500</td>
+                            <td class="mono">10,000</td>
+                            <td class="mono"><strong>18,500</strong></td>
+                            <td class="mono">11,800</td>
+                            <td><span class="status status-error"><span class="status-dot"></span>-6,700</span></td>
+                            <td class="mono">3 wks</td>
+                        </tr>
+                        <tr>
+                            <td><strong>I-20 Rotor 4"</strong><br><span style="font-size: 0.75rem; color: #666;">I-20-04-SS</span></td>
+                            <td class="mono">4,200</td>
+                            <td class="mono">6,800</td>
+                            <td class="mono"><strong>11,000</strong></td>
+                            <td class="mono">8,400</td>
+                            <td><span class="status status-warning"><span class="status-dot"></span>-2,600</span></td>
+                            <td class="mono">3 wks</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Key Features -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">⚡</span>
+                    <span>Platform Features</span>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>📊 Dashboard</h4>
+                        <p>High-level metrics: SKUs in catalog, demand match value, opportunity gaps, and oversupply items. Trend charts showing demand vs. inventory over time.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📦 Catalog Management</h4>
+                        <p>Import via Excel/CSV or API. Map your products to demand data. See instant matching scores with demand indicators per item.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔍 Demand Explorer</h4>
+                        <p>Browse full demand dataset. Filter by region, quarter, category, size. Drill into project-level detail. Export reports for planning.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔴 Gap Analysis</h4>
+                        <p>Focused view of opportunity gaps—where demand exceeds your inventory. Sorted by value, grouped by category, with trend indicators.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🗺️ Regional Heat Maps</h4>
+                        <p>Interactive map showing demand concentration by metro area. See your coverage percentage by region. Identify expansion opportunities.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📅 Timing Analysis</h4>
+                        <p>Demand patterns by quarter and season. See peak periods. Plan growing cycles or production runs to capture seasonal demand.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📏 Size Analysis</h4>
+                        <p>Demand breakdown by container size or product variant. Identify where to shift production—from oversupplied sizes to high-demand gaps.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔔 Smart Alerts</h4>
+                        <p>Configurable notifications: demand spikes, new opportunities, coverage drops, seasonal reminders, production deadlines.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How It Works -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🔄</span>
+                    <span>How It Works</span>
+                </div>
+
+                <div class="workflow">
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <h5>Upload Catalog</h5>
+                        <p>Import your inventory via CSV, Excel, or API</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <h5>Auto-Match</h5>
+                        <p>System maps your items to demand data</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <h5>See Gaps</h5>
+                        <p>Identify opportunities instantly</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">4</div>
+                        <h5>Take Action</h5>
+                        <p>Adjust production, inventory, or sales focus</p>
+                    </div>
+                </div>
+
+                <div class="callout">
+                    <h4>🔗 Network Effects</h4>
+                    <p>The more contractors using Takeo OS, the more valuable the demand signal becomes for suppliers. The more suppliers participating, the better the catalog data and pricing becomes for contractors. <strong>Everyone wins.</strong></p>
+                </div>
+            </div>
+
+            <!-- Value Proposition -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">💰</span>
+                    <span>The Value</span>
+                </div>
+
+                <div class="value-props">
+                    <div class="value-prop">
+                        <div class="prop-icon">📉</div>
+                        <h4>Reduce Waste</h4>
+                        <p>Stop growing or manufacturing products that won't sell. Align supply with actual demand.</p>
+                    </div>
+                    <div class="value-prop">
+                        <div class="prop-icon">📈</div>
+                        <h4>Capture Opportunity</h4>
+                        <p>See gaps before competitors. Position inventory where demand is heading.</p>
+                    </div>
+                    <div class="value-prop">
+                        <div class="prop-icon">🎯</div>
+                        <h4>Plan Smarter</h4>
+                        <p>Make data-driven decisions on production schedules, inventory levels, and regional focus.</p>
+                    </div>
+                </div>
+
+                <div class="stats-grid" style="margin-top: 1.5rem;">
+                    <div class="stat-card">
+                        <span class="stat-number">30%</span>
+                        <span class="stat-label">Reduced Oversupply</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">2.4x</span>
+                        <span class="stat-label">Faster Gap Response</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">$2.1M</span>
+                        <span class="stat-label">Avg. Opportunity/Supplier</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">94%</span>
+                        <span class="stat-label">Forecast Accuracy</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Sources -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🔐</span>
+                    <span>Data Sources & Methodology</span>
+                </div>
+
+                <p><strong>Known Demand</strong> is derived from actual bid packages, specifications, and project data flowing through Takeo OS. This includes quantities, install timelines, and regional distribution from commercial landscape construction projects.</p>
+
+                <p><strong>Estimated Market Demand</strong> uses multiple data sources to model segments outside the Takeo ecosystem:</p>
+
+                <ul style="margin: 1rem 0 1rem 1.5rem; font-size: 0.9rem;">
+                    <li>Building permit data (residential, commercial)</li>
+                    <li>Historical nursery and distributor sales patterns</li>
+                    <li>Regional population and construction growth factors</li>
+                    <li>Seasonal adjustment models</li>
+                    <li>Industry association reports and surveys</li>
+                </ul>
+
+                <p>Confidence levels are clearly indicated throughout the platform. Suppliers can choose to view Known Demand only, Total Market (known + estimated), or a side-by-side comparison.</p>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-tagline">See What Contractors Actually Need. Before Your Competitors Do.</div>
+            <div class="footer-sub">Takeo for Suppliers — Supply Intelligence Powered by Real Demand Data</div>
+        </div>
+    </div>
+</body>
+</html>
